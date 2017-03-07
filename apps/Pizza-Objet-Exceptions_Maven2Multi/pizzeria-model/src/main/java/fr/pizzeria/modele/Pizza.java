@@ -40,32 +40,16 @@ public class Pizza {
 				+ "\t Dans la categorie :" + categoriePizza.toString());
 
 	}
-
-	public String toString() {
-
-		StringBuilder sb = new StringBuilder();
-
-		for (Field champ : this.getClass().getDeclaredFields()) {
-			ToString annotationTrouve = champ.getAnnotation(ToString.class);
-			if (annotationTrouve != null) {
-				try {
-					sb.append(champ.get(this).toString());
-				} catch (IllegalArgumentException | IllegalAccessException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-		return sb.toString();
-
-	}
+	
+	
 
 	@Override
 	public int hashCode() {
 		return HashCodeBuilder.reflectionHashCode(this);
 	}
 
-	public boolean equals(Pizza pizza) {
+	@Override
+	public boolean equals(Object pizza) {
 		return EqualsBuilder.reflectionEquals(this, pizza);
 	}
 

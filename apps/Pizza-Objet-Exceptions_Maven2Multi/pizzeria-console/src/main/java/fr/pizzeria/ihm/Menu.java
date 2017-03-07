@@ -1,12 +1,12 @@
 
 package fr.pizzeria.ihm;
 
-import java.util.Map;
+
+
 
 import fr.pizzeria.ihm.menu.option.DeleteOptionMenu;
 import fr.pizzeria.ihm.menu.option.ExitOptionMenu;
 import fr.pizzeria.ihm.menu.option.GroupedPrintedOptionMenu;
-import fr.pizzeria.ihm.menu.option.OptionMenu;
 import fr.pizzeria.ihm.menu.option.PrintedOptionMenu;
 import fr.pizzeria.ihm.menu.option.PrixMaxOptionMenu;
 import fr.pizzeria.ihm.menu.option.SaveOptionMenu;
@@ -25,12 +25,6 @@ public class Menu extends MenuAbs {
 
 	}
 
-	public Map<Integer, OptionMenu> getMapOptions() {
-		return listOptions;
-	}
-
-	public void setListOptions(Map<Integer, OptionMenu> listOptions) {
-		this.listOptions = listOptions;
-	}
+	
 
 }

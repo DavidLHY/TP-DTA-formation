@@ -38,14 +38,13 @@ public class IPizzaDaoFichier implements Dao<Pizza, String> {
 					pz.setCategoriePizza(CategoriePizza.valueOf(contenuFichier[2]));
 					return pz;
 				} catch (IOException e) {
-					// System.out.println("Fichier au mauvais format");
+					
 					throw new DaoException(e);
 				}
 
 			}).collect(Collectors.toList());
 
 		} catch (IOException e) {
-			// System.out.println("Pas lecture data");
 			throw new DaoException(e);
 		}
 

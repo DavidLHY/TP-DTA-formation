@@ -11,14 +11,11 @@ public class IhmTools {
 
 	Scanner scanner;
 	Dao<Pizza, String> iPizza;
-	// Dao<Pizza, String> iPizza = new IPizzaDaoFichier();
-
 	public IhmTools() {
 
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 
 		String daoimpl = bundle.getString("dao.impl");
-		System.out.println(daoimpl);
 		scanner = new Scanner(System.in);
 		try {
 			iPizza = (Dao<Pizza, String>) Class.forName(daoimpl).newInstance();
