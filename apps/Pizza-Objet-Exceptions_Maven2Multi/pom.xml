@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>david-Pizzeria</groupId>
+  <artifactId>david-Pizzeria-Parents</artifactId>
+  <version>1</version>
+  <packaging>pom</packaging>
+  
+  <modules>
+      <module>pizzeria-console</module>
+      <module>pizzeria-dao</module>
+      <module>pizzeria-model</module>
+  </modules> 
+  
+  <properties>
+  <java.version>1.8</java.version>
+  </properties>
+  
+  <build>
+    <pluginManagement>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			   <configuration>
+				 <archive>
+					<manifest>
+						<mainClass>fr.pizzeria.console.PizzeriaAdminConsoleApp</mainClass>
+					</manifest>
+				</archive>
+		 </configuration>
+      </plugin>
+      
+      <plugin>
+         <artifactId>maven-dependency-plugin</artifactId>
+         <version>3.0.0</version>
+      </plugin>   
+    </plugins>   
+    </pluginManagement>
+    
+    <plugins>    
+       <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-source-plugin</artifactId>
+           <version>3.0.1</version>
+           <executions>
+               <execution>
+                   <id>attach-sources</id>
+                   <phase>package</phase>
+                   <goals>
+                       <goal>jar-no-fork</goal>
+                    </goals>
+               </execution>
+           </executions>
+       </plugin>
+    </plugins>
+    
+  </build>
+  
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>de.bechte.junit</groupId>
+        <artifactId>junit-hierarchicalcontextrunner</artifactId>
+        <version>4.12.1</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.hamcrest</groupId>
+         <artifactId>hamcrest-library</artifactId>
+         <version>1.3</version>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.commons</groupId>
+         <artifactId>commons-lang3</artifactId>
+         <version>3.5</version>
+      </dependency>
+      
+      <dependency>
+ 	    <groupId>org.reflections</groupId>
+    	<artifactId>reflections</artifactId>
+    	<version>0.9.10</version>
+	  </dependency>
+      
+      
+    </dependencies>
+  </dependencyManagement>
+    
+  <dependencies>
+    <dependency>
+     <groupId>de.bechte.junit</groupId>
+     <artifactId>junit-hierarchicalcontextrunner</artifactId>
+    </dependency>
+  </dependencies> 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</project>

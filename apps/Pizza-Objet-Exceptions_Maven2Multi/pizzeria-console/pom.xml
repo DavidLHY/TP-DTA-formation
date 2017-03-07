@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<artifactId>david-pizzeria-console</artifactId>
+	<packaging>jar</packaging>
+	<parent>
+		<groupId>david-Pizzeria</groupId>
+		<artifactId>david-Pizzeria-Parents</artifactId>
+		<relativePath>../pom.xml</relativePath>
+		<version>1</version>
+	</parent>
+
+	<properties>
+		<dao.impl>fr.pizzeria.dao.IPizzaDaoFichier</dao.impl>
+	</properties>
+
+	<build>
+		<finalName> PizzaAppliction</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>fr.pizzeria.console.PizzeriaAdminConsoleApp</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>david-Pizzeria</groupId>
+			<artifactId>david-pizzeria-dao</artifactId>
+			<version>1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>david-Pizzeria</groupId>
+			<artifactId>david-pizzeria-model</artifactId>
+			<version>1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+		</dependency>
+
+	</dependencies>
+
+
+
+	<profiles>
+
+		<profile>
+
+			<id>dev</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<dao.impl>fr.pizzeria.dao.IPizzaDaoInit</dao.impl>
+			</properties>
+		</profile>
+
+		<profile>
+
+			<id>prod</id>
+
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<dao.impl>fr.pizzeria.dao.IPizzaDaoFichier</dao.impl>
+			</properties>
+		</profile>
+
+
+	</profiles>
+
+
+
+
+
+</project>
