@@ -3,7 +3,7 @@ package fr.pizzeria.ihm.menu.option;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 @TagOptionMenu
-public class PrintedOptionMenu implements OptionMenu {
+public class PrintedOptionMenu extends OptionMenu {
 
 	@Override
 	public void libelle() {

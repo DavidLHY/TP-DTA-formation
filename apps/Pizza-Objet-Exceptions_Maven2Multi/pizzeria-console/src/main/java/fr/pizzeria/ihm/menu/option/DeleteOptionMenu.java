@@ -8,7 +8,7 @@ import fr.pizzeria.ihm.tools.IhmTools;
 
 
 @TagOptionMenu
-public class DeleteOptionMenu implements OptionMenu {
+public class DeleteOptionMenu extends OptionMenu {
 
 	@Override
 	public void libelle() {

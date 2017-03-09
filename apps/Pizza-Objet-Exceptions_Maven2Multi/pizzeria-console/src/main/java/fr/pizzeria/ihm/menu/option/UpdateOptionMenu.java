@@ -9,7 +9,7 @@ import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
 
-public class UpdateOptionMenu implements OptionMenu {
+public class UpdateOptionMenu extends OptionMenu {
 
 	@Override
 	public void libelle() {
@@ -20,17 +20,11 @@ public class UpdateOptionMenu implements OptionMenu {
 	public boolean execute(IhmTools ihmTools) {
 
 		String choix;
-		Pizza pizza = new Pizza();
+		
 		System.out.println("Veuillez donner le code de la pizza à changer");
 		choix = ihmTools.getScanner().next();
-
-		System.out.println("Veuiller donner le nouveau code");
-		pizza.setCode(ihmTools.getScanner().next());
-		System.out.println("Veuiller donner le nouveau nom");
-		pizza.setNom(ihmTools.getScanner().next());
-		System.out.println("Veuiller donner le nouveau Prix");
-		pizza.setPrix(ihmTools.getScanner().nextDouble());
-		System.out.println("Veuiller donner le nouveau type de pizza:");
+		
+		Pizza pizza = saisirPizza(ihmTools);		
 
 		int cat = 1;
 		for (CategoriePizza current : CategoriePizza.values()) {

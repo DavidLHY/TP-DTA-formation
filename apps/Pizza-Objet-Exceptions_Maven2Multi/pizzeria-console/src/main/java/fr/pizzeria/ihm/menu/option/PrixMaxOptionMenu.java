@@ -6,7 +6,7 @@ import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.modele.Pizza;
 
 @TagOptionMenu
-public class PrixMaxOptionMenu implements OptionMenu {
+public class PrixMaxOptionMenu extends OptionMenu {
 
 	@Override
 	public void libelle() {
