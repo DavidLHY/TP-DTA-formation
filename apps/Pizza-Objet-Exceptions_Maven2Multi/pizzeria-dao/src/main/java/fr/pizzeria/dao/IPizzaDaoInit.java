@@ -1,5 +1,6 @@
 package fr.pizzeria.dao;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +13,12 @@ import fr.pizzeria.modele.Pizza;
 public class IPizzaDaoInit implements Dao<Pizza, String> {
 
 	private List<Pizza> listOfPizza = new ArrayList<>();
+	
+
+	 
 
 	public IPizzaDaoInit() {
+	
 		listOfPizza.add(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
 		listOfPizza.add(new Pizza(1, "MAR", "Margherita", 14.00, CategoriePizza.SANS_VIANDE));
 		listOfPizza.add(new Pizza(2, "REI", "Reine", 11.50, CategoriePizza.SANS_VIANDE));

@@ -93,10 +93,22 @@
 			<id>dev</id>
 
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<dao.impl>fr.pizzeria.dao.IPizzaDaoInit</dao.impl>
+			</properties>
+		</profile>
+		
+		<profile>
+
+			<id>dev2</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<dao.impl>fr.pizzeria.dao.IPizzaDaoBD</dao.impl>
 			</properties>
 		</profile>
 

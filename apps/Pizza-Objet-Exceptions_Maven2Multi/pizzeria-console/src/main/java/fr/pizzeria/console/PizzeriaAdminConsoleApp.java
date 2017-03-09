@@ -15,6 +15,10 @@ public class PizzeriaAdminConsoleApp {
 		IhmTools ihmTools = new IhmTools();
 
 		menu.actionmenu(ihmTools);
+		
+		
+		
+		
 
 	}
 }
