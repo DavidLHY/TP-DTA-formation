@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.reflections.Reflections;
 
+import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.ihm.menu.option.OptionMenu;
 import fr.pizzeria.ihm.menu.option.TagOptionMenu;
 
@@ -22,7 +23,8 @@ public class MenuReflection extends MenuAbs {
 					try {
 						return omCls.newInstance();
 					} catch (Exception e) {
-						throw new RuntimeException(e);
+						throw new DaoException("menu vide",e);
+						
 					}
 				}).collect(Collectors.toList());
 
