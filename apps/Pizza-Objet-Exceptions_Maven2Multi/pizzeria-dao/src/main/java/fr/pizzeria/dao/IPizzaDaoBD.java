@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,9 +28,11 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 	public IPizzaDaoBD() {
 		
 		try {
+			ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
+		
 			Class.forName("com.mysql.jdbc.Driver");
 			
-		    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizzeria","root",null);
+		    connection = DriverManager.getConnection(bundle.getString("url"),bundle.getString("admin"),null);
 			statement = connection.createStatement();
 			resultats = statement.executeQuery("SELECT * FROM	PIZZA");
 			
