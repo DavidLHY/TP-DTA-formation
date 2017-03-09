@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import fr.pizzeria.ihm.menu.option.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
@@ -23,9 +25,9 @@ public abstract class MenuAbs {
 				choix = ihmTools.getScanner().nextInt();
 				this.listOptions.get(choix).execute(ihmTools);
 			} catch (NullPointerException e) {
-				System.out.println("Choix indisponible Null");
+		       Logger.getAnonymousLogger().log(Level.INFO, "Choix indisponible",e); 
 			} catch (InputMismatchException e) {
-				System.out.println("Choix indisponible");
+				Logger.getAnonymousLogger().log(Level.INFO, "Saisie Incorrecte",e); 
 				ihmTools.getScanner().next();
 			}
 

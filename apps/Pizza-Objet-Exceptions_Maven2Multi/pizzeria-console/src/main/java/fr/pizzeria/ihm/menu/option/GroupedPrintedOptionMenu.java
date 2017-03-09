@@ -6,7 +6,7 @@ import fr.pizzeria.ihm.menu.option.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.modele.Pizza;
 
-public class GroupedPrintedOptionMenu extends OptionMenu {
+public class GroupedPrintedOptionMenu implements OptionMenu {
 
 	@Override
 	public void libelle() {

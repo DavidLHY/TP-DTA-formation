@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.pizzeria.dao.Dao;
-import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
@@ -35,7 +34,7 @@ public class IPizzaDaoInit implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public boolean save(Pizza pizza) throws DaoException {
+	public boolean save(Pizza pizza)  {
 
 		if (listOfPizza.stream().filter(p -> p.getCode().equals(pizza.getCode())).count() != 0)
 			throw new SavePizzaException();
@@ -56,7 +55,7 @@ public class IPizzaDaoInit implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public boolean delete(String codePizza) throws DaoException {
+	public boolean delete(String codePizza)  {
 
 		listOfPizza.removeIf(p -> p.getCode().equals(codePizza));
 
@@ -64,7 +63,7 @@ public class IPizzaDaoInit implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public boolean quite() throws DaoException {
+	public boolean quite() {
 		
 		
 		System.exit(0);

@@ -7,6 +7,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -15,6 +17,7 @@ import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
+
 
 public class IPizzaDaoFichier implements Dao<Pizza, String> {
 
@@ -37,10 +40,11 @@ public class IPizzaDaoFichier implements Dao<Pizza, String> {
 					pz.setPrix(Double.valueOf(contenuFichier[1]));
 					pz.setCategoriePizza(CategoriePizza.valueOf(contenuFichier[2]));
 					return pz;
-				} catch (IOException e) {
-					
-					throw new DaoException(e);
+				} catch (IOException e) {					
+					Logger.getAnonymousLogger().log(Level.SEVERE, "probleme lors de la lecture des fichier pizzas, pizza Null par defaut",e);
+					return pz;
 				}
+				
 
 			}).collect(Collectors.toList());
 
@@ -56,7 +60,7 @@ public class IPizzaDaoFichier implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public boolean save(Pizza pizza) throws DaoException {
+	public boolean save(Pizza pizza) {
 
 		if (listOfPizza.stream().filter(p -> p.getCode().equals(pizza.getCode())).count() != 0)
 			throw new SavePizzaException();
@@ -77,7 +81,7 @@ public class IPizzaDaoFichier implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public boolean delete(String codePizza) throws DaoException {
+	public boolean delete(String codePizza)  {
 
 		listOfPizza.removeIf(p -> p.getCode().equals(codePizza));
 
@@ -85,7 +89,7 @@ public class IPizzaDaoFichier implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public boolean quite() throws DaoException {
+	public boolean quite()  {
 		
 		System.exit(0);
 		

@@ -2,6 +2,8 @@ package fr.pizzeria.ihm.tools;
 
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.dao.IPizzaDaoInit;
@@ -20,6 +22,7 @@ public class IhmTools {
 		try {
 			iPizza = (Dao<Pizza, String>) Class.forName(daoimpl).newInstance();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			Logger.getAnonymousLogger().log(Level.SEVERE, "Mauvais appel de class dao, utilisation DaoInit Par d&faut",e);
 			iPizza = new IPizzaDaoInit();
 		}
 

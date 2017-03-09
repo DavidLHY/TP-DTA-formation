@@ -1,12 +1,15 @@
 package fr.pizzeria.ihm.menu.option;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.ihm.menu.option.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
 
-public class SaveOptionMenu extends OptionMenu {
+public class SaveOptionMenu implements OptionMenu {
 
 	@Override
 	public void libelle() {
@@ -41,7 +44,7 @@ public class SaveOptionMenu extends OptionMenu {
 		try {
 			ihmTools.getiPizza().save(pizza);
 		} catch (DaoException e) {
-			System.out.println(" Code déjà existant");
+			Logger.getAnonymousLogger().log(Level.SEVERE, "Code pizza déjà existant",e);
 		}
 
 		return true;

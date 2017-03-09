@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.exception.DaoException;
@@ -55,7 +57,7 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public boolean save(Pizza pizza) throws DaoException {
+	public boolean save(Pizza pizza)  {
 
 		if (listOfPizza.stream().filter(p -> p.getCode().equals(pizza.getCode())).count() != 0)
 			throw new SavePizzaException();
@@ -98,7 +100,7 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public boolean delete(String codePizza) throws DaoException {
+	public boolean delete(String codePizza) {
 
 		listOfPizza.removeIf(p -> p.getCode().equals(codePizza));
 		
@@ -113,13 +115,13 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public boolean quite() throws DaoException {
+	public boolean quite()  {
 		
 		try {
 			connection.close();
 			System.exit(0);
 		} catch (SQLException e) {
-			throw new DaoException("probleme lors de la fermeture de la base de donnees",e);
+			Logger.getAnonymousLogger().log(Level.SEVERE, "probleme lors de la fermeture de la base de donnees",e);
 		}
 		
 		

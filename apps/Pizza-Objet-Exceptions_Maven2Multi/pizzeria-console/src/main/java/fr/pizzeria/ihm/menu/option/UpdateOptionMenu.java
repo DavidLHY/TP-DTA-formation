@@ -1,12 +1,15 @@
 package fr.pizzeria.ihm.menu.option;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.ihm.menu.option.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
 
-public class UpdateOptionMenu extends OptionMenu {
+public class UpdateOptionMenu implements OptionMenu {
 
 	@Override
 	public void libelle() {
@@ -41,7 +44,7 @@ public class UpdateOptionMenu extends OptionMenu {
 		try {
 			ihmTools.getiPizza().update(choix, pizza);
 		} catch (DaoException e) {
-			System.out.println(" Code non existant");
+			Logger.getAnonymousLogger().log(Level.SEVERE, "Code pizza non existant",e);
 		}
 		return true;
 	}
