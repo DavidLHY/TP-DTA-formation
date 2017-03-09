@@ -20,22 +20,19 @@ import fr.pizzeria.modele.Pizza;
 public class IPizzaDaoBD implements Dao<Pizza, String> {
 
 	private List<Pizza> listOfPizza = new ArrayList<>();
-	private Statement statement;
-	private ResultSet resultats;
-    private Connection connection;
+	
 	 
 
 	public IPizzaDaoBD() {
 		
-		try {
-			ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
+		String sql="SELECT * FROM	PIZZA";
+		
+		try (Connection conn= newCreateConnection();
+			 Statement statement = conn.createStatement();
+			 ResultSet resultats = statement.executeQuery(sql);
+				){
 		
 			Class.forName("com.mysql.jdbc.Driver");
-			
-		    connection = DriverManager.getConnection(bundle.getString("url"),bundle.getString("admin"),null);
-			statement = connection.createStatement();
-			resultats = statement.executeQuery("SELECT * FROM	PIZZA");
-			
 			
 			while(resultats.next()) {
 
@@ -54,6 +51,25 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 		
 	}
 
+	private Connection newCreateConnection() {
+
+		ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
+		
+		try {
+			Class.forName(bundle.getString("driver"));
+			return  DriverManager.getConnection(bundle.getString("url"),bundle.getString("admin"),bundle.getString("pwd"));
+			
+		} catch (ClassNotFoundException e) {
+			throw new DaoException("Pas de Driver",e);
+		} catch (SQLException e) {
+			throw new DaoException("Pas de connections au serveur",e);
+		
+		}		
+		
+		
+		
+	}
+
 	@Override
 	public List<Pizza> findAllPizzas() {
 		return listOfPizza;
@@ -67,7 +83,8 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 
 		
 		
-		try {
+		try (Connection conn= newCreateConnection();
+			 Statement statement = conn.createStatement();){
 			listOfPizza.add(pizza);
 			statement.executeUpdate("INSERT INTO PIZZA(reference,libelle,prix,categorie)"+ " VALUES('"+
 					pizza.getCode()+"','"+
@@ -89,7 +106,8 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 		listOfPizza.removeIf(p -> p.getCode().equals(codePizza));
 		listOfPizza.add(pizza);
 		
-		try {
+		try (Connection conn= newCreateConnection();
+			 Statement statement = conn.createStatement();){
 			statement.executeUpdate("UPDATE PIZZA SET "	
 		      + "prix="+pizza.getPrix()
 		      + ",reference='"+pizza.getCode()+"'"
@@ -107,7 +125,8 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 
 		listOfPizza.removeIf(p -> p.getCode().equals(codePizza));
 		
-		try {
+		try (Connection conn= newCreateConnection();
+			 Statement statement = conn.createStatement();){
 			statement.executeUpdate("DELETE FROM PIZZA WHERE reference='"+codePizza+"'");
 		} catch (SQLException e) {
 			throw new DaoException("probleme lors de la suppression d'une pizza en base de donnees",e);
@@ -119,13 +138,9 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 
 	@Override
 	public boolean quite()  {
-		
-		try {
-			connection.close();
+					
 			System.exit(0);
-		} catch (SQLException e) {
-			Logger.getAnonymousLogger().log(Level.SEVERE, "probleme lors de la fermeture de la base de donnees",e);
-		}
+		
 		
 		
 		return false;
