@@ -13,5 +13,9 @@ public class UpdatePizzaException extends DaoException {
 	public UpdatePizzaException(Throwable cause) {
 		super(cause);
 	}
+	
+	public UpdatePizzaException(String message, Throwable cause) {
+		super(message,cause);
+	}
 
 }

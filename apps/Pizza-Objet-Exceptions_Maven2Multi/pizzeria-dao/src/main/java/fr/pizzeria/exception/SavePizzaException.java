@@ -13,5 +13,9 @@ public class SavePizzaException extends DaoException {
 	public SavePizzaException(Throwable cause) {
 		super(cause);
 	}
+	
+	public SavePizzaException(String message, Throwable cause) {
+		super(message,cause);
+	}
 
 }

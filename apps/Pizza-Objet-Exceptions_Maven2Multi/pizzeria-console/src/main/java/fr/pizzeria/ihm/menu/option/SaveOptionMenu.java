@@ -40,7 +40,6 @@ public class SaveOptionMenu extends OptionMenu {
 		pizza.setId(ihmTools.getiPizza().findAllPizzas().size());
 		try {
 			ihmTools.getiPizza().save(pizza);
-			Pizza.setNbpizzas(ihmTools.getiPizza().findAllPizzas().size());
 		} catch (DaoException e) {
 			System.out.println(" Code déjà existant");
 		}

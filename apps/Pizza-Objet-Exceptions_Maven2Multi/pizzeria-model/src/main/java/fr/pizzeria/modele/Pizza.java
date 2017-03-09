@@ -14,7 +14,6 @@ public class Pizza {
 	@ToString(uppercase = true)
 	private String nom;
 	private double prix;
-	private static int nbPizzas;
 	private CategoriePizza categoriePizza;
 
 	public Pizza(int id, String code, String nom, double prix, CategoriePizza categoriePizza) {
@@ -31,7 +30,7 @@ public class Pizza {
 		this.code = " aa  ";
 		this.nom = " ";
 		this.prix = 0.0;
-		nbPizzas++;
+		
 	}
 
 	public void printPizza() {
@@ -83,14 +82,6 @@ public class Pizza {
 
 	public void setPrix(double prix) {
 		this.prix = prix;
-	}
-
-	public static int getNbPizzas() {
-		return nbPizzas;
-	}
-
-	public static void setNbpizzas(int nbpizzas) {
-		Pizza.nbPizzas = nbpizzas;
 	}
 
 	public CategoriePizza getCategoriePizza() {

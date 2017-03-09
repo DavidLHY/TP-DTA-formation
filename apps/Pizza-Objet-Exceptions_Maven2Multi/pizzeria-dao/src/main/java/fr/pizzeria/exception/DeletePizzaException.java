@@ -13,5 +13,9 @@ public class DeletePizzaException extends DaoException {
 	public DeletePizzaException(Throwable cause) {
 		super(cause);
 	}
+	
+	public DeletePizzaException(String message, Throwable cause) {
+		super(message,cause);
+	}
 
 }

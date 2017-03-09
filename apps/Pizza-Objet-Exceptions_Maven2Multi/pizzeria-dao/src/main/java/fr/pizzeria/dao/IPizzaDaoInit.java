@@ -27,7 +27,6 @@ public class IPizzaDaoInit implements Dao<Pizza, String> {
 		listOfPizza.add(new Pizza(5, "SAV", "Savoyarde", 13.00, CategoriePizza.VIANDE));
 		listOfPizza.add(new Pizza(6, "ORI", "Orientale", 13.50, CategoriePizza.VIANDE));
 		listOfPizza.add(new Pizza(7, "SAU", "Saumon", 14.00, CategoriePizza.POISSON));
-		Pizza.setNbpizzas(listOfPizza.size());
 	}
 
 	@Override

@@ -18,12 +18,11 @@ public class DeleteOptionMenu extends OptionMenu {
 	public boolean execute(IhmTools ihmTools) {
 
 		String choix;
-		System.out.println("Veuillez donner le code de la pizza � supprimer");
+		System.out.println("Veuillez donner le code de la pizza à supprimer");
 		choix = ihmTools.getScanner().next();
 
 		try {
 			ihmTools.getiPizza().delete(choix);
-			Pizza.setNbpizzas(ihmTools.getiPizza().findAllPizzas().size());
 		} catch (DaoException e) {
 			System.out.println(" Pas supprimable, car pas de bonne reference");
 		}

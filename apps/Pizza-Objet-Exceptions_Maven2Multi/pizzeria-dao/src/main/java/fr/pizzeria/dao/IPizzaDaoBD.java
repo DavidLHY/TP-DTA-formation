@@ -44,11 +44,9 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 			
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			throw new DaoException("probleme lors de la lecture des pizzas en base de donnees",e);
 		}
 		
-		
-		Pizza.setNbpizzas(listOfPizza.size());
 	}
 
 	@Override
@@ -73,7 +71,7 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 								pizza.getCategoriePizza().name()+"')");
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DaoException("probleme lors de l'ajout d'une pizza en base de donnees",e);
 		}
 
 		return true;
@@ -93,7 +91,7 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 		      + ",libelle='"+pizza.getNom()+"'"
 		      + ",categorie='"+pizza.getCategoriePizza().name()+"' WHERE reference='"+codePizza+"'");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DaoException("probleme lors de la mise à jour d'une pizza en base de donnees",e);
 		}
 
 		return true;
@@ -107,7 +105,7 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 		try {
 			statement.executeUpdate("DELETE FROM PIZZA WHERE reference='"+codePizza+"'");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DaoException("probleme lors de la suppression d'une pizza en base de donnees",e);
 		}
 		
 
@@ -121,7 +119,7 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 			connection.close();
 			System.exit(0);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DaoException("probleme lors de la fermeture de la base de donnees",e);
 		}
 		
 		
