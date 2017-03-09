@@ -118,7 +118,9 @@ public class IPizzaDaoBD extends DaoPizza {
 				conn.setAutoCommit(false);
 				for(Pizza pizza: listCurrent){
 				
-					   try{
+					if(pizza!=null)
+					{
+					   try{						   
 					   statement.setString(1,pizza.getCode());
 					   statement.setString(2,pizza.getNom());
 					   statement.setDouble(3,pizza.getPrix());
@@ -128,6 +130,7 @@ public class IPizzaDaoBD extends DaoPizza {
 					   }catch(SQLException e){
 						   System.out.println("Reference Pizza Deja existante");
 					   }
+					}
 					   
 					
 				}
