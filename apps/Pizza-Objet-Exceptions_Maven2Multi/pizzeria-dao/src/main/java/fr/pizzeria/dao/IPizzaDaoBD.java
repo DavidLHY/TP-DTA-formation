@@ -2,26 +2,22 @@ package fr.pizzeria.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import fr.pizzeria.dao.Dao;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
 
-public class IPizzaDaoBD implements Dao<Pizza, String> {
+public class IPizzaDaoBD extends DaoPizza {
 
-	private List<Pizza> listOfPizza = new ArrayList<>();
 	
-	 
 
 	public IPizzaDaoBD() {
 		
@@ -84,13 +80,17 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 		
 		
 		try (Connection conn= newCreateConnection();
-			 Statement statement = conn.createStatement();){
+			 PreparedStatement statement = conn.prepareStatement("INSERT INTO PIZZA(reference,libelle,prix,categorie) VALUES(?,?,?,?)");){
 			listOfPizza.add(pizza);
-			statement.executeUpdate("INSERT INTO PIZZA(reference,libelle,prix,categorie)"+ " VALUES('"+
-					pizza.getCode()+"','"+
-							pizza.getNom()+ "',"+
-								pizza.getPrix()	+",'"+
-								pizza.getCategoriePizza().name()+"')");
+			
+			
+			statement.setString(1,pizza.getCode());
+			statement.setString(2,pizza.getNom());
+			statement.setDouble(1,pizza.getPrix());
+			statement.setString(1,pizza.getCategoriePizza().name());
+			
+			statement.executeUpdate();
+			statement.close();
 			
 		} catch (SQLException e) {
 			throw new DaoException("probleme lors de l'ajout d'une pizza en base de donnees",e);
@@ -136,13 +136,5 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 		return false;
 	}
 
-	@Override
-	public boolean quite()  {
-					
-			System.exit(0);
-		
-		
-		
-		return false;
-	}
+
 }

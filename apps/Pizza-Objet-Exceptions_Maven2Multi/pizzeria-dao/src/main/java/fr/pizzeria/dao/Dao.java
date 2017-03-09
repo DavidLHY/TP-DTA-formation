@@ -13,6 +13,6 @@ public interface Dao<E, T> {
 
 	boolean delete(T codePizza) ;
 	
-	boolean quite() ;
+	
 
 }
