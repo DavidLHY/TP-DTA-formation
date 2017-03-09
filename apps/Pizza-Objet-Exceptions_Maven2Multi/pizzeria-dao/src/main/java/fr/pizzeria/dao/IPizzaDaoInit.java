@@ -1,6 +1,8 @@
 package fr.pizzeria.dao;
 
 
+import java.util.List;
+
 import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
 
@@ -18,6 +20,12 @@ public class IPizzaDaoInit extends DaoPizza {
 		listOfPizza.add(new Pizza(5, "SAV", "Savoyarde", 13.00, CategoriePizza.VIANDE));
 		listOfPizza.add(new Pizza(6, "ORI", "Orientale", 13.50, CategoriePizza.VIANDE));
 		listOfPizza.add(new Pizza(7, "SAU", "Saumon", 14.00, CategoriePizza.POISSON));
+	}
+
+	// unused
+	@Override
+	public void save(List<Pizza> listOfPizza) {
+
 	}
 
 

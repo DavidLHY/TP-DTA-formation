@@ -44,6 +44,8 @@ public abstract class DaoPizza implements Dao<Pizza, String> {
 		return false;
 	}
 
+	public abstract void save(List<Pizza> listOfPizza);
+	
 	public List<Pizza> getListOfPizza() {
 		return listOfPizza;
 	}

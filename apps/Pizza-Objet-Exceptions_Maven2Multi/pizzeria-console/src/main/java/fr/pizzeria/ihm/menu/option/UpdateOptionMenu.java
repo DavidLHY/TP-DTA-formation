@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.ihm.menu.option.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
-import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
 
 public class UpdateOptionMenu extends OptionMenu {
@@ -26,19 +25,12 @@ public class UpdateOptionMenu extends OptionMenu {
 		
 		Pizza pizza = saisirPizza(ihmTools);		
 
-		int cat = 1;
-		for (CategoriePizza current : CategoriePizza.values()) {
-
-			System.out.println(cat + " - " + current);
-			cat++;
-		}
-		cat = ihmTools.getScanner().nextInt();
-		pizza.setCategoriePizza(CategoriePizza.values()[cat - 1]);
+		
 
 		try {
 			ihmTools.getiPizza().update(choix, pizza);
 		} catch (DaoException e) {
-			Logger.getAnonymousLogger().log(Level.SEVERE, "Code pizza non existant",e);
+			Logger.getAnonymousLogger().log(Level.INFO, "Code pizza non existant",e);
 		}
 		return true;
 	}

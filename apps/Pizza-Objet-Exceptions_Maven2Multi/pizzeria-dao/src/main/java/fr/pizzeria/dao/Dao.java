@@ -2,6 +2,8 @@ package fr.pizzeria.dao;
 
 import java.util.List;
 
+import fr.pizzeria.modele.Pizza;
+
 
 public interface Dao<E, T> {
 
@@ -12,6 +14,8 @@ public interface Dao<E, T> {
 	boolean update(T codePizza, E pizza) ;
 
 	boolean delete(T codePizza) ;
+
+	
 	
 	
 

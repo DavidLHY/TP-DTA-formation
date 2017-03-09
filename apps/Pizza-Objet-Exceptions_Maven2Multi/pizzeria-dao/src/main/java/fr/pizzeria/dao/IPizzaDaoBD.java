@@ -5,10 +5,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
 import java.util.List;
 import java.util.ResourceBundle;
+
+import org.apache.commons.collections4.ListUtils;
 
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.exception.SavePizzaException;
@@ -75,7 +78,7 @@ public class IPizzaDaoBD extends DaoPizza {
 	public boolean save(Pizza pizza)  {
 
 		if (listOfPizza.stream().filter(p -> p.getCode().equals(pizza.getCode())).count() != 0)
-			throw new SavePizzaException();
+			throw new SavePizzaException("Code deja existant");
 
 		
 		
@@ -86,11 +89,10 @@ public class IPizzaDaoBD extends DaoPizza {
 			
 			statement.setString(1,pizza.getCode());
 			statement.setString(2,pizza.getNom());
-			statement.setDouble(1,pizza.getPrix());
-			statement.setString(1,pizza.getCategoriePizza().name());
+			statement.setDouble(3,pizza.getPrix());
+			statement.setString(4,pizza.getCategoriePizza().name());
 			
 			statement.executeUpdate();
-			statement.close();
 			
 		} catch (SQLException e) {
 			throw new DaoException("probleme lors de l'ajout d'une pizza en base de donnees",e);
@@ -99,6 +101,46 @@ public class IPizzaDaoBD extends DaoPizza {
 		return true;
 
 	}
+	
+	
+	public void save(List<Pizza> listOfPizza)
+	{
+		List<List<Pizza>> listOList =  ListUtils.partition(listOfPizza,3);
+		
+		
+		
+		for(List<Pizza> listCurrent : listOList )
+		{
+			
+			try (Connection conn= newCreateConnection();
+					PreparedStatement statement = conn.prepareStatement("INSERT INTO PIZZA(reference,libelle,prix,categorie) VALUES(?,?,?,?)");){
+				
+				conn.setAutoCommit(false);
+				for(Pizza pizza: listCurrent){
+				
+					   try{
+					   statement.setString(1,pizza.getCode());
+					   statement.setString(2,pizza.getNom());
+					   statement.setDouble(3,pizza.getPrix());
+					   statement.setString(4,pizza.getCategoriePizza().name());					
+					   
+					   statement.executeUpdate();
+					   }catch(SQLException e){
+						   System.out.println("Reference Pizza Deja existante");
+					   }
+					   
+					
+				}
+				conn.commit();
+			
+			} catch (SQLException e) {
+				
+				throw new DaoException("probleme lors de l'import des pizzas en base de donnees",e);
+			} 
+		}
+		
+	}
+	
 
 	@Override
 	public boolean update(String codePizza, Pizza pizza) {
@@ -106,13 +148,19 @@ public class IPizzaDaoBD extends DaoPizza {
 		listOfPizza.removeIf(p -> p.getCode().equals(codePizza));
 		listOfPizza.add(pizza);
 		
+				
 		try (Connection conn= newCreateConnection();
-			 Statement statement = conn.createStatement();){
-			statement.executeUpdate("UPDATE PIZZA SET "	
-		      + "prix="+pizza.getPrix()
-		      + ",reference='"+pizza.getCode()+"'"
-		      + ",libelle='"+pizza.getNom()+"'"
-		      + ",categorie='"+pizza.getCategoriePizza().name()+"' WHERE reference='"+codePizza+"'");
+			PreparedStatement statement = conn.prepareStatement("UPDATE PIZZA SET reference=?,libelle=?,prix=?,categorie=? WHERE reference=?");){
+			
+			statement.setString(1,pizza.getCode());
+			statement.setString(2,pizza.getNom());
+			statement.setDouble(3,pizza.getPrix());
+			statement.setString(4,pizza.getCategoriePizza().name());
+			statement.setString(5,codePizza);
+			
+			statement.executeUpdate();
+			statement.close();
+			
 		} catch (SQLException e) {
 			throw new DaoException("probleme lors de la mise à jour d'une pizza en base de donnees",e);
 		}

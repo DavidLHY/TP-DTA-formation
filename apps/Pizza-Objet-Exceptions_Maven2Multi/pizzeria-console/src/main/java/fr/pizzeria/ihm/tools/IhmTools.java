@@ -5,14 +5,14 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import fr.pizzeria.dao.Dao;
+import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.dao.IPizzaDaoInit;
-import fr.pizzeria.modele.Pizza;
+
 
 public class IhmTools {
 
 	Scanner scanner;
-	Dao<Pizza, String> iPizza;
+	DaoPizza iPizza;
 	public IhmTools() {
 
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
@@ -20,7 +20,7 @@ public class IhmTools {
 		String daoimpl = bundle.getString("dao.impl");
 		scanner = new Scanner(System.in);
 		try {
-			iPizza = (Dao<Pizza, String>) Class.forName(daoimpl).newInstance();
+			iPizza = (DaoPizza) Class.forName(daoimpl).newInstance();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			Logger.getAnonymousLogger().log(Level.SEVERE, "Mauvais appel de class dao, utilisation DaoInit Par d&faut",e);
 			iPizza = new IPizzaDaoInit();
@@ -32,7 +32,7 @@ public class IhmTools {
 		return scanner;
 	}
 
-	public Dao<Pizza, String> getiPizza() {
+	public DaoPizza getiPizza() {
 		return iPizza;
 	}
 
