@@ -15,7 +15,7 @@ public class ExitOptionMenu extends OptionMenu {
 	public boolean execute(IhmTools ihmTools) {
 
 		System.out.println("Bonne journ�e bro!");
-
+		ihmTools.getiPizza().quite();
 		return true;
 	}
 

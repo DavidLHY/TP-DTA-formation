@@ -19,7 +19,7 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 	private List<Pizza> listOfPizza = new ArrayList<>();
 	private Statement statement;
 	private ResultSet resultats;
-
+    private Connection connection;
 	 
 
 	public IPizzaDaoBD() {
@@ -27,7 +27,7 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizzeria","root",null);
+		    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizzeria","root",null);
 			statement = connection.createStatement();
 			resultats = statement.executeQuery("SELECT * FROM	PIZZA");
 			
@@ -38,9 +38,7 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 				String code = resultats.getString("reference");
 				String name = resultats.getString("libelle");
 				double price = resultats.getDouble("prix");
-				String categorie = resultats.getString("categorie");
-				//System.out.println("[id=" + id + " code="+code+" name=" + name + " price=" + price + " categorie="+categorie+"]"); 
-				
+				String categorie = resultats.getString("categorie");				
 				listOfPizza.add(new Pizza(id,code,name,price,CategoriePizza.valueOf(categorie)));
 			}			
 			
@@ -50,15 +48,6 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 		}
 		
 		
-		
-		/*listOfPizza.add(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
-		listOfPizza.add(new Pizza(1, "MAR", "Margherita", 14.00, CategoriePizza.SANS_VIANDE));
-		listOfPizza.add(new Pizza(2, "REI", "Reine", 11.50, CategoriePizza.SANS_VIANDE));
-		listOfPizza.add(new Pizza(3, "FRO", "4Fromage", 12.00, CategoriePizza.SANS_VIANDE));
-		listOfPizza.add(new Pizza(4, "CAN", "Cannibale", 12.50, CategoriePizza.VIANDE));
-		listOfPizza.add(new Pizza(5, "SAV", "Savoyarde", 13.00, CategoriePizza.VIANDE));
-		listOfPizza.add(new Pizza(6, "ORI", "Orientale", 13.50, CategoriePizza.VIANDE));
-		listOfPizza.add(new Pizza(7, "SAU", "Saumon", 14.00, CategoriePizza.POISSON));*/
 		Pizza.setNbpizzas(listOfPizza.size());
 	}
 
@@ -122,6 +111,20 @@ public class IPizzaDaoBD implements Dao<Pizza, String> {
 		}
 		
 
+		return false;
+	}
+
+	@Override
+	public boolean quite() throws DaoException {
+		
+		try {
+			connection.close();
+			System.exit(0);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
 		return false;
 	}
 }

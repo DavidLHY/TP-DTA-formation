@@ -84,4 +84,12 @@ public class IPizzaDaoFichier implements Dao<Pizza, String> {
 		return false;
 	}
 
+	@Override
+	public boolean quite() throws DaoException {
+		
+		System.exit(0);
+		
+		return false;
+	}
+
 }
