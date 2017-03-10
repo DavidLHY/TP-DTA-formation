@@ -18,7 +18,7 @@ public class PrixMaxOptionMenu extends OptionMenu {
 	public boolean execute(IhmTools ihmTools) {
 
 		System.out.println("La pizza la plus cher est:");
-		ihmTools.getiPizza().findAllPizzas().stream().max(Comparator.comparing(Pizza::getPrix)).get().printPizza();
+		ihmTools.getDaoImpl().findAllPizzas().stream().max(Comparator.comparing(Pizza::getPrix)).get().printPizza();
 
 		return false;
 	}

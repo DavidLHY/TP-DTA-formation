@@ -25,7 +25,7 @@ public class DeleteOptionMenu extends OptionMenu {
 		choix = ihmTools.getScanner().next();
 
 		try {
-			ihmTools.getiPizza().delete(choix);
+			ihmTools.getDaoImpl().delete(choix);
 		} catch (DaoException e) {
 			Logger.getAnonymousLogger().log(Level.INFO, " Pas supprimable, car pas de bonne reference",e); 
 		}

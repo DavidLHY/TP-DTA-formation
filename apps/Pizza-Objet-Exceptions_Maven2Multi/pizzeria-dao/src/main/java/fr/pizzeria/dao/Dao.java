@@ -2,7 +2,7 @@ package fr.pizzeria.dao;
 
 import java.util.List;
 
-import fr.pizzeria.modele.Pizza;
+import fr.pizzeria.exception.DaoException;
 
 
 public interface Dao<E, T> {
@@ -15,8 +15,9 @@ public interface Dao<E, T> {
 
 	boolean delete(T codePizza) ;
 
-	
-	
-	
+	default void importData(Dao<E,T> source) {
+		throw new DaoException("Non implémenté");
+	}
+
 
 }

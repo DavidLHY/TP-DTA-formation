@@ -72,9 +72,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>david-Pizzeria</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>david-pizzeria-model</artifactId>
-			<version>1</version>
+			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
@@ -109,6 +109,7 @@
 			</activation>
 			<properties>
 				<dao.impl>fr.pizzeria.dao.IPizzaDaoBD</dao.impl>
+				<dao.source>fr.pizzeria.dao.IPizzaDaoFichier</dao.source>
 			</properties>
 		</profile>
 
@@ -121,6 +122,7 @@
 			</activation>
 			<properties>
 				<dao.impl>fr.pizzeria.dao.IPizzaDaoFichier</dao.impl>
+				<dao.source>fr.pizzeria.dao.IPizzaDaoFichier</dao.source>
 			</properties>
 		</profile>
 
