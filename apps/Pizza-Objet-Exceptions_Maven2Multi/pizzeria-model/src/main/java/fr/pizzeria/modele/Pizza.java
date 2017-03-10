@@ -1,18 +1,33 @@
 package fr.pizzeria.modele;
 
 
+
+import javax.persistence.Entity;
+
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+@Entity
 public class Pizza {
 
-	@ToString
+	
+	
+	@Id
+	@GeneratedValue
 	private int id;
-	@ToString(uppercase = true)
+	
+	
 	private String code;
-	@ToString(uppercase = true)
+	
 	private String nom;
+	
 	private double prix;
+	
+	@Enumerated
 	private CategoriePizza categoriePizza;
 
 	public Pizza(int id, String code, String nom, double prix, CategoriePizza categoriePizza) {

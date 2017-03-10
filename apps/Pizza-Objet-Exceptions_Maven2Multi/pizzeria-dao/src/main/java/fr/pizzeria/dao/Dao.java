@@ -18,6 +18,7 @@ public interface Dao<E, T> {
 	default void importData(Dao<E,T> source) {
 		throw new DaoException("Non implémenté");
 	}
+	
 
 
 }

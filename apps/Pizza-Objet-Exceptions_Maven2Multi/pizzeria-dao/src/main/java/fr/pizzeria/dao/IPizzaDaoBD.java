@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -17,8 +17,10 @@ import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
 
-public class IPizzaDaoBD extends DaoPizza {
+public class IPizzaDaoBD implements Dao<Pizza,String> {
 
+	private List<Pizza> listOfPizza = new ArrayList<>();
+	
 	public IPizzaDaoBD() {
 
 		String sql = "SELECT * FROM	PIZZA";
@@ -32,10 +34,10 @@ public class IPizzaDaoBD extends DaoPizza {
 			while (resultats.next()) {
 
 				Integer id = resultats.getInt("ID");
-				String code = resultats.getString("reference");
-				String name = resultats.getString("libelle");
+				String code = resultats.getString("code");
+				String name = resultats.getString("nom");
 				double price = resultats.getDouble("prix");
-				String categorie = resultats.getString("categorie");
+				String categorie = resultats.getString("categoriePizza");
 				listOfPizza.add(new Pizza(id, code, name, price, CategoriePizza
 						.valueOf(categorie)));
 			}
@@ -80,7 +82,7 @@ public class IPizzaDaoBD extends DaoPizza {
 
 		try (Connection conn = newCreateConnection();
 				PreparedStatement statement = conn
-						.prepareStatement("INSERT INTO PIZZA(reference,libelle,prix,categorie) VALUES(?,?,?,?)");) {
+						.prepareStatement("INSERT INTO PIZZA(code,nom,prix,categoriePizza) VALUES(?,?,?,?)");) {
 			listOfPizza.add(pizza);
 
 			statement.setString(1, pizza.getCode());
@@ -100,45 +102,6 @@ public class IPizzaDaoBD extends DaoPizza {
 
 	}
 
-	public void save(List<Pizza> listOfPizza) {
-		List<List<Pizza>> listOList = ListUtils.partition(listOfPizza, 3);
-
-		for (List<Pizza> listCurrent : listOList) {
-
-			try (Connection conn = newCreateConnection();
-					PreparedStatement statement = conn
-							.prepareStatement("INSERT INTO PIZZA(reference,libelle,prix,categorie) VALUES(?,?,?,?)");) {
-
-				conn.setAutoCommit(false);
-				for (Pizza pizza : listCurrent) {
-
-					if (pizza != null) {
-						try {
-							statement.setString(1, pizza.getCode());
-							statement.setString(2, pizza.getNom());
-							statement.setDouble(3, pizza.getPrix());
-							statement.setString(4, pizza.getCategoriePizza()
-									.name());
-
-							statement.executeUpdate();
-						} catch (SQLException e) {
-							System.out
-									.println("Reference Pizza Deja existante");
-						}
-					}
-
-				}
-				conn.commit();
-
-			} catch (SQLException e) {
-
-				throw new DaoException(
-						"probleme lors de l'import des pizzas en base de donnees",
-						e);
-			}
-		}
-
-	}
 
 	@Override
 	public boolean update(String codePizza, Pizza pizza) {
@@ -148,7 +111,7 @@ public class IPizzaDaoBD extends DaoPizza {
 
 		try (Connection conn = newCreateConnection();
 				PreparedStatement statement = conn
-						.prepareStatement("UPDATE PIZZA SET reference=?,libelle=?,prix=?,categorie=? WHERE reference=?");) {
+						.prepareStatement("UPDATE PIZZA SET code=?,nom=?,prix=?,categoriePizza=? WHERE reference=?");) {
 
 			statement.setString(1, pizza.getCode());
 			statement.setString(2, pizza.getNom());
@@ -175,7 +138,7 @@ public class IPizzaDaoBD extends DaoPizza {
 
 		try (Connection conn = newCreateConnection();
 				Statement statement = conn.createStatement();) {
-			statement.executeUpdate("DELETE FROM PIZZA WHERE reference='"
+			statement.executeUpdate("DELETE FROM PIZZA WHERE code='"
 					+ codePizza + "'");
 		} catch (SQLException e) {
 			throw new DaoException(
@@ -193,7 +156,7 @@ public class IPizzaDaoBD extends DaoPizza {
 
 		try (Connection conn = newCreateConnection();
 				PreparedStatement statement = conn
-						.prepareStatement("INSERT INTO PIZZA(reference,libelle,prix,categorie) VALUES(?,?,?,?)");) {
+						.prepareStatement("INSERT INTO PIZZA(code,nom,prix,categoriePizza) VALUES(?,?,?,?)");) {
 
 			conn.setAutoCommit(false);
 			
