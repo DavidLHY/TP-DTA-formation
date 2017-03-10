@@ -28,7 +28,7 @@ public class UpdateOptionMenu extends OptionMenu {
 		
 
 		try {
-			ihmTools.getiPizza().update(choix, pizza);
+			ihmTools.getDaoImpl().update(choix, pizza);
 		} catch (DaoException e) {
 			Logger.getAnonymousLogger().log(Level.INFO, "Code pizza non existant",e);
 		}

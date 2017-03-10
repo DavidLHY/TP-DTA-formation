@@ -10,15 +10,9 @@ public class PizzeriaAdminConsoleApp {
 	
 	public static void main(String[] args) {
 
-		Menu menu = new Menu();
-
 		IhmTools ihmTools = new IhmTools();
-
+		
+		Menu menu = new Menu();
 		menu.actionmenu(ihmTools);
-		
-		
-		
-		
-
 	}
 }
