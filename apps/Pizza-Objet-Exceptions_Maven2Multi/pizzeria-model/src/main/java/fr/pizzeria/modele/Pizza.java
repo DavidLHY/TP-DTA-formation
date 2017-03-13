@@ -3,9 +3,10 @@ package fr.pizzeria.modele;
 
 
 import javax.persistence.Entity;
-
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -17,8 +18,8 @@ public class Pizza {
 	
 	
 	@Id
-	@GeneratedValue
-	private int id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	
 	
 	private String code;
@@ -27,7 +28,7 @@ public class Pizza {
 	
 	private double prix;
 	
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private CategoriePizza categoriePizza;
 
 	public Pizza(int id, String code, String nom, double prix, CategoriePizza categoriePizza) {
@@ -40,10 +41,7 @@ public class Pizza {
 	}
 
 	public Pizza() {
-		this.id = 0;
-		this.code = " aa  ";
-		this.nom = " ";
-		this.prix = 0.0;
+
 		
 	}
 

@@ -23,7 +23,7 @@ public class SaveOptionMenu extends OptionMenu {
 		Pizza pizza = saisirPizza(ihmTools);	
 
 
-		pizza.setId(ihmTools.getDaoImpl().findAllPizzas().size());
+		//pizza.setId(ihmTools.getDaoImpl().findAllPizzas().size());
 		try {
 			ihmTools.getDaoImpl().save(pizza);
 		} catch (DaoException e) {

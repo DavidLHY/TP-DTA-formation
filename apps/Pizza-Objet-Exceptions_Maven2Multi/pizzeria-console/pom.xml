@@ -97,6 +97,7 @@
 			</activation>
 			<properties>
 				<dao.impl>fr.pizzeria.dao.IPizzaDaoInit</dao.impl>
+				<dao.source>fr.pizzeria.dao.IPizzaDaoFichier</dao.source>
 			</properties>
 		</profile>
 		
@@ -105,7 +106,7 @@
 			<id>dev2</id>
 
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<dao.impl>fr.pizzeria.dao.IPizzaDaoBD</dao.impl>
@@ -122,6 +123,19 @@
 			</activation>
 			<properties>
 				<dao.impl>fr.pizzeria.dao.IPizzaDaoFichier</dao.impl>
+				<dao.source>fr.pizzeria.dao.IPizzaDaoFichier</dao.source>
+			</properties>
+		</profile>
+		
+		<profile>
+
+			<id>jpaProf</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<dao.impl>fr.pizzeria.dao.IPizzaDaoJPA</dao.impl>
 				<dao.source>fr.pizzeria.dao.IPizzaDaoFichier</dao.source>
 			</properties>
 		</profile>
