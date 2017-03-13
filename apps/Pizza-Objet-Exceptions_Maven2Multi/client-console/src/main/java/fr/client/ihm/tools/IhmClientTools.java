@@ -9,7 +9,9 @@ import fr.client.ihm.MenuClient;
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.dao.DaoClientJPA;
+import fr.pizzeria.dao.IPizzaDaoJPA;
 import fr.pizzeria.modele.Client;
+import fr.pizzeria.modele.Commande;
 import fr.pizzeria.modele.Pizza;
 
 public class IhmClientTools {
@@ -18,15 +20,31 @@ public class IhmClientTools {
 	private Client client;
 	private MenuClient menuClient;
 	private DaoClient daoClient;
+	private Dao<Pizza,String> daoPizza;
+	private Commande commande;
+
+
+
 	
-
-
-
 	public IhmClientTools(){
 		scanner = new Scanner(System.in);
 		menuClient=new MenuClient();
 		daoClient = new DaoClientJPA();
+		daoPizza = new IPizzaDaoJPA();
 	}
+	
+	public Dao<Pizza, String> getDaoPizza() {
+		return daoPizza;
+	}
+
+	public Commande getCommande() {
+		return commande;
+	}
+
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
+
 	
 	public DaoClient getDaoClient() {
 		return daoClient;

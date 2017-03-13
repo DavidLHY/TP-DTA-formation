@@ -58,9 +58,8 @@ public class MenuClient {
 		
 		System.out.println("Veuillez choisir votre option");
 		int choix = ihmClientTools.getScanner().nextInt();		
-		optionClient.get(choix).execute(ihmClientTools);
+		optionCommande.get(choix).execute(ihmClientTools);
 		
-		printMenuClient(ihmClientTools);
 		
 	}
 	

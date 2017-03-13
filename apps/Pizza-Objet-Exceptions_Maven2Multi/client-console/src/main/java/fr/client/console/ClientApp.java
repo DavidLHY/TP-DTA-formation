@@ -2,7 +2,7 @@ package fr.client.console;
 
 import java.util.logging.Level;
 
-import fr.client.ihm.MenuClient;
+
 import fr.client.ihm.tools.IhmClientTools;
 
 public class ClientApp {
