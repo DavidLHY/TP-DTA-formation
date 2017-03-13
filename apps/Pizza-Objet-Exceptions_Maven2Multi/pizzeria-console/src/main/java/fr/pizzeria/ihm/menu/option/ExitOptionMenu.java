@@ -16,6 +16,7 @@ public class ExitOptionMenu extends OptionMenu {
 
 		System.out.println("Bonne journée bro!");
 		ihmTools.getScanner().close();
+		System.exit(0);
 		return true;
 	}
 

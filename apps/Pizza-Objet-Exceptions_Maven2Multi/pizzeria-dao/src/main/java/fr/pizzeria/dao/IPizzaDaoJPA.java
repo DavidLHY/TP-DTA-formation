@@ -28,7 +28,7 @@ public class IPizzaDaoJPA implements Dao<Pizza, String> {
 	}
 	
 	@Override
-	public List<Pizza> findAllPizzas() {
+	public List<Pizza> findAll() {
 		
 		EntityManager em = emFactory.createEntityManager();
 		listOfPizza= em.createQuery("select piz from Pizza piz",	Pizza.class).getResultList();

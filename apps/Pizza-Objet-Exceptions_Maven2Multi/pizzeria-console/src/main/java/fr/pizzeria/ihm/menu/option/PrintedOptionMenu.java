@@ -15,10 +15,10 @@ public class PrintedOptionMenu extends OptionMenu {
 	@Override
 	public boolean execute(IhmTools ihmTools) {
 
-		for (int i = 0; i < ihmTools.getDaoImpl().findAllPizzas().size(); i++) {
-			ihmTools.getDaoImpl().findAllPizzas().get(i).printPizza();
+		for (int i = 0; i < ihmTools.getDaoImpl().findAll().size(); i++) {
+			ihmTools.getDaoImpl().findAll().get(i).printPizza();
 		}
-		System.out.println("\n" + ihmTools.getDaoImpl().findAllPizzas().size() + " Pizzas restantes \n");
+		System.out.println("\n" + ihmTools.getDaoImpl().findAll().size() + " Pizzas restantes \n");
 		return true;
 	}
 }

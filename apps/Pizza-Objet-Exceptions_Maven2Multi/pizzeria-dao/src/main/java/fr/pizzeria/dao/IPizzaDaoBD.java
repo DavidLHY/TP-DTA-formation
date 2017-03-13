@@ -69,7 +69,7 @@ public class IPizzaDaoBD implements Dao<Pizza,String> {
 	}
 
 	@Override
-	public List<Pizza> findAllPizzas() {
+	public List<Pizza> findAll() {
 		return listOfPizza;
 	}
 
@@ -152,7 +152,7 @@ public class IPizzaDaoBD implements Dao<Pizza,String> {
 	public void importData(Dao<Pizza, String> source) {
 
 		List<List<Pizza>> listOList = ListUtils.partition(
-				source.findAllPizzas(), 3);
+				source.findAll(), 3);
 
 		try (Connection conn = newCreateConnection();
 				PreparedStatement statement = conn

@@ -56,7 +56,7 @@ public class IPizzaDaoFichier implements Dao<Pizza,String> {
 	
 	
 	@Override
-	public List<Pizza> findAllPizzas() {
+	public List<Pizza> findAll() {
 		return listOfPizza;
 	}
 

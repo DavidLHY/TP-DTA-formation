@@ -38,6 +38,7 @@ public abstract class MenuAbs {
 	public void printMenu() {
 		System.out.println(this.titre);
 
+	
 		for (Entry<Integer, OptionMenu> entrySet : listOptions.entrySet()) {
 			entrySet.getValue().libelle();
 

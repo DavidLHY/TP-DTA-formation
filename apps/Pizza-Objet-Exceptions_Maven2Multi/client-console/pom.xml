@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<artifactId>david-client-console</artifactId>
+	<packaging>jar</packaging>
+	<parent>
+		<groupId>david-Pizzeria</groupId>
+		<artifactId>david-Pizzeria-Parents</artifactId>
+		<relativePath>../pom.xml</relativePath>
+		<version>1</version>
+	</parent>
+
+	<properties>
+		<dao.impl>fr.pizzeria.dao.IPizzaDaoFichier</dao.impl>
+	</properties>
+
+	<build>
+		<finalName> PizzaAppliction</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		
+	</build>
+	
+	<dependencies>
+	
+	<dependency>
+			<groupId>david-Pizzeria</groupId>
+			<artifactId>david-pizzeria-dao</artifactId>
+			<version>1</version>
+		</dependency>
+	
+	 <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+     </dependency>
+     
+     
+     <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-collections4</artifactId>      
+     </dependency>
+     
+     <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+    <dependency>
+       <groupId>org.hibernate</groupId>
+       <artifactId>hibernate-entitymanager</artifactId>
+    </dependency>
+     
+	</dependencies>
+
+	
+
+
+
+</project>

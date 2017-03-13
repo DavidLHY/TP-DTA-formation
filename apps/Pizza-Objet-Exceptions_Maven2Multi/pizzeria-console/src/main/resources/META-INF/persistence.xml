@@ -3,6 +3,9 @@
 	<persistence-unit name="david-pizzeria-model" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>fr.pizzeria.modele.Pizza</class>
+		<class>fr.pizzeria.modele.Client</class>
+		<class>fr.pizzeria.modele.Commande</class>
+		<class>fr.pizzeria.modele.Livreur</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pizzeria"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>

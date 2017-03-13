@@ -17,7 +17,7 @@ public class GroupedPrintedOptionMenu extends OptionMenu {
 	@Override
 	public boolean execute(IhmTools ihmTools) {
 
-		ihmTools.getDaoImpl().findAllPizzas().stream().collect(Collectors.groupingBy(Pizza::getCategoriePizza))
+		ihmTools.getDaoImpl().findAll().stream().collect(Collectors.groupingBy(Pizza::getCategoriePizza))
 				.forEach((k, v) -> {
 					System.out.println("Dans la categorie " + k.toString() + ":");
 					for (Pizza current : v) {

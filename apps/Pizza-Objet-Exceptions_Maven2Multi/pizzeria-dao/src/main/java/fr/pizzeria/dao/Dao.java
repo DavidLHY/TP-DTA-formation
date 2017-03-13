@@ -7,13 +7,16 @@ import fr.pizzeria.exception.DaoException;
 
 public interface Dao<E, T> {
 
-	List<E> findAllPizzas();
+	default List<E> findAll()
+	{
+		throw new DaoException("Non implémenté");
+	}
 
-	boolean save(E pizza) ;
+	boolean save(E e) ;
 
-	boolean update(T codePizza, E pizza) ;
+	boolean update(T t, E e) ;
 
-	boolean delete(T codePizza) ;
+	boolean delete(T t) ;
 
 	default void importData(Dao<E,T> source) {
 		throw new DaoException("Non implémenté");

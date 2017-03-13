@@ -26,7 +26,7 @@ public class IPizzaDaoInit implements Dao<Pizza,String> {
 
 
 	@Override
-	public List<Pizza> findAllPizzas() {
+	public List<Pizza> findAll() {
 		return listOfPizza;
 	}
 

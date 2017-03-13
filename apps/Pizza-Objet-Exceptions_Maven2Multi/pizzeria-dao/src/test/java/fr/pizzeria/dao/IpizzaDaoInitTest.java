@@ -24,13 +24,13 @@ public class IpizzaDaoInitTest {
 
 	@Test
 	public void test_Find_All() {
-		List<Pizza> listPizza = pizzaDao.findAllPizzas();
+		List<Pizza> listPizza = pizzaDao.findAll();
 		assertEquals(8, listPizza.size());
 	}
 
 	@Test
 	public void test_save() {
-		List<Pizza> listPizza = pizzaDao.findAllPizzas();
+		List<Pizza> listPizza = pizzaDao.findAll();
 		Pizza pz = new Pizza(5, "SEV", "Savoyarde", 13.00, CategoriePizza.VIANDE);
 
 		pizzaDao.save(pz);
