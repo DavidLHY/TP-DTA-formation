@@ -64,7 +64,7 @@ public class DaoLivreurJPA implements Dao<Livreur, String> {
 		EntityManager em = emFactory.createEntityManager();
 		if(!val.equals("all"))
 		{
-		if (val != null) {
+		if (!val.equals(null)) {
 			listOfLivreur = em.createQuery("select liv from Livreur liv where liv." + ref + "=:val", Livreur.class)
 					.setParameter("val", val).getResultList();
 		}

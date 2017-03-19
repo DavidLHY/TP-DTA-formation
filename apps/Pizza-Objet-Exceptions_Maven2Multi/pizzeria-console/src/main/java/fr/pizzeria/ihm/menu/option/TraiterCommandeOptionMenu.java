@@ -1,6 +1,8 @@
 package fr.pizzeria.ihm.menu.option;
 
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.modele.Commande;
@@ -38,6 +40,7 @@ public class TraiterCommandeOptionMenu extends OptionMenu {
 		for (Commande current : ListCommande) {
 			if (current.getId() == id_Commande) {
 				commandeExp = current;
+				break;
 			}
 		}
 		
@@ -45,12 +48,18 @@ public class TraiterCommandeOptionMenu extends OptionMenu {
 
 			if (current.getId() == id_Livreur) {
 				livreurExp = current;
+				break;
 			}
 		}
 		
-		commandeExp.setLivreur(livreurExp);
-
-		ihmTools.getDaoCommande().update(""+id_Commande, commandeExp);
+		try{
+		  commandeExp.setLivreur(livreurExp);
+		  ihmTools.getDaoCommande().update(""+id_Commande, commandeExp);
+		}catch(NullPointerException e)
+		{
+			Logger.getAnonymousLogger().log(Level.INFO, "Choix Commande et/ou livreur incorrect ",e);
+			
+		}
 		
 		return false;
 	}

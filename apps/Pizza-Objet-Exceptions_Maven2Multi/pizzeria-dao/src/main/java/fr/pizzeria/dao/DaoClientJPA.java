@@ -57,7 +57,7 @@ public class DaoClientJPA implements DaoClient {
 	}
 
 	@Override
-	public Client findclientmail(String email) {
+	public Client findclientmail(String email) throws DaoException  {
 		
 		
 		EntityManager em = emFactory.createEntityManager();
