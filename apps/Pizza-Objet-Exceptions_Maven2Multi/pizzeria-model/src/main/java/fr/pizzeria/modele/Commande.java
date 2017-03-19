@@ -108,6 +108,13 @@ public class Commande {
 	public void setPizzas(Set<Pizza> pizzas) {
 		this.pizzas = pizzas;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Commande [id=" + id + ", numero_commande=" + numero_commande + ", dat_commande=" + dat_commande
+				+ ", client_id=" + client_id + ", livreur=" + livreur + ", pizzas=" + pizzas + "]";
+	}
 	
 	
 }

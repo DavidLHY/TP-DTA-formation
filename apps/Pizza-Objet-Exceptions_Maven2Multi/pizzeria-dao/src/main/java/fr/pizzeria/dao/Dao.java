@@ -23,7 +23,7 @@ public interface Dao<E, T> {
 		throw new DaoException("Non implémenté");
 	}
 	
-	default public Set<E> findby(T t1,T t3){
+	default public Set<E> findby(T t1,Object t3){
 		throw new DaoException("Non implementé");
 	};
 

@@ -4,6 +4,8 @@ package fr.pizzeria.ihm;
 
 
 
+import fr.pizzeria.ihm.menu.option.AjoutLivreurOptionMenu;
+import fr.pizzeria.ihm.menu.option.CommandesNonTraiteesOptionMenu;
 import fr.pizzeria.ihm.menu.option.DeleteOptionMenu;
 import fr.pizzeria.ihm.menu.option.ExitOptionMenu;
 import fr.pizzeria.ihm.menu.option.GroupedPrintedOptionMenu;
@@ -23,6 +25,8 @@ public class Menu extends MenuAbs {
 		listOptions.put(5, new GroupedPrintedOptionMenu());
 		listOptions.put(6, new PrixMaxOptionMenu());
 		listOptions.put(7, new ImporterDonnesOptionMenu());
+		listOptions.put(8,new AjoutLivreurOptionMenu());
+		listOptions.put(9, new CommandesNonTraiteesOptionMenu());
 		listOptions.put(99, new ExitOptionMenu());
 
 	}

@@ -107,7 +107,7 @@ public class IPizzaDaoJPA implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public Set<Pizza> findby(String ref, String val) {
+	public Set<Pizza> findby(String ref, Object val) {
 
 		List<Pizza> listOfPizza=new ArrayList<>();
 		EntityManager em = emFactory.createEntityManager();
