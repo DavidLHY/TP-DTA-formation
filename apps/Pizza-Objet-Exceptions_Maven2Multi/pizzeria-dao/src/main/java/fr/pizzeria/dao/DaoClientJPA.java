@@ -57,7 +57,7 @@ public class DaoClientJPA implements DaoClient {
 	}
 
 	@Override
-	public Client findclientmail(String email) throws DaoException  {
+	public Client findclientmail(String email)  {
 		
 		
 		EntityManager em = emFactory.createEntityManager();
@@ -70,7 +70,7 @@ public class DaoClientJPA implements DaoClient {
 			  
 		}catch(NoResultException e)
 		{
-				throw new DaoException("Identifiant Inconnu");
+				throw new DaoException("Identifiant Inconnu",e);
 				
 		}
 		

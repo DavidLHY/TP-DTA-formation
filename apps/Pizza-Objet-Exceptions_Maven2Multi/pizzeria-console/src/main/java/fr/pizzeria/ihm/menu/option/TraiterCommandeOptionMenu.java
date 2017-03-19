@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.modele.Commande;
 import fr.pizzeria.modele.Livreur;
@@ -35,15 +36,15 @@ public class TraiterCommandeOptionMenu extends OptionMenu {
 		System.out.println("Veuillez entrer l'id du livreur pour expedier la commande:");
 		int id_Livreur = ihmTools.getScanner().nextInt();
 
-		Commande commandeExp=null;
-		Livreur livreurExp=null;
+		Commande commandeExp = null;
+		Livreur livreurExp = null;
 		for (Commande current : ListCommande) {
 			if (current.getId() == id_Commande) {
 				commandeExp = current;
 				break;
 			}
 		}
-		
+
 		for (Livreur current : ListLivreur) {
 
 			if (current.getId() == id_Livreur) {
@@ -51,16 +52,20 @@ public class TraiterCommandeOptionMenu extends OptionMenu {
 				break;
 			}
 		}
-		
-		try{
-		  commandeExp.setLivreur(livreurExp);
-		  ihmTools.getDaoCommande().update(""+id_Commande, commandeExp);
-		}catch(NullPointerException e)
-		{
-			Logger.getAnonymousLogger().log(Level.INFO, "Choix Commande et/ou livreur incorrect ",e);
-			
+
+		try {
+			if (commandeExp != null && livreurExp != null) {
+				commandeExp.setLivreur(livreurExp);
+				ihmTools.getDaoCommande().update(Integer.toString(id_Commande), commandeExp);
+			}else
+			{
+				throw new DaoException("id commande et/ou Livreur null");
+			}
+		} catch (NullPointerException e) {
+			Logger.getAnonymousLogger().log(Level.INFO, "Choix Commande et/ou livreur incorrect ", e);
+
 		}
-		
+
 		return false;
 	}
 

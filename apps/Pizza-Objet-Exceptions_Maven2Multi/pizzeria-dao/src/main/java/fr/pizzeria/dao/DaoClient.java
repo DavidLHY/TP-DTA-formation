@@ -7,7 +7,7 @@ import fr.pizzeria.modele.Client;
 public interface DaoClient extends Dao<Client, String> {
 
 
-	public Client findclientmail(String mail) throws DaoException;
+	public Client findclientmail(String mail) ;
 	
 	
 
