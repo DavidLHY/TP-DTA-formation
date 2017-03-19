@@ -13,6 +13,7 @@ import fr.pizzeria.ihm.menu.option.ImporterDonnesOptionMenu;
 import fr.pizzeria.ihm.menu.option.PrintedOptionMenu;
 import fr.pizzeria.ihm.menu.option.PrixMaxOptionMenu;
 import fr.pizzeria.ihm.menu.option.SaveOptionMenu;
+import fr.pizzeria.ihm.menu.option.TraiterCommandeOptionMenu;
 import fr.pizzeria.ihm.menu.option.UpdateOptionMenu;
 
 public class Menu extends MenuAbs {
@@ -27,6 +28,7 @@ public class Menu extends MenuAbs {
 		listOptions.put(7, new ImporterDonnesOptionMenu());
 		listOptions.put(8,new AjoutLivreurOptionMenu());
 		listOptions.put(9, new CommandesNonTraiteesOptionMenu());
+		listOptions.put(10,new TraiterCommandeOptionMenu());
 		listOptions.put(99, new ExitOptionMenu());
 
 	}

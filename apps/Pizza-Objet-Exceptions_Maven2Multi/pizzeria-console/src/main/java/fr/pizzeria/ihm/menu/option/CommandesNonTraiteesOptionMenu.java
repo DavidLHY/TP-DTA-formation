@@ -16,7 +16,7 @@ public class CommandesNonTraiteesOptionMenu extends OptionMenu {
 	@Override
 	public boolean execute(IhmTools ihmTools) {
 
-		Set<Commande> setCommande = ihmTools.getDaoCommande().findby("numero_commande", null);
+		Set<Commande> setCommande = ihmTools.getDaoCommande().findby("livreur_id", null);
 		
 		
 		for(Commande current:setCommande)

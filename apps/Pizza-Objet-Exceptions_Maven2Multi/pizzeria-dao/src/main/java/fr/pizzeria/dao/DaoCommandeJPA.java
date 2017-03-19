@@ -39,8 +39,29 @@ public class DaoCommandeJPA implements Dao<Commande, String> {
 	}
 
 	@Override
-	public boolean update(String t, Commande e) {
-		// TODO Auto-generated method stub
+	public boolean update(String id, Commande commande) {
+
+		
+		EntityManager em = emFactory.createEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		try {
+
+			Commande commandeMod = em.createQuery("select com from Commande com where  com.id=:codP", Commande.class)
+					.setParameter("codP", Integer.parseInt(id)).getSingleResult();
+			commande.setId(commandeMod.getId());
+			em.merge(commande);
+			et.commit();
+
+		} catch (DaoException e) {
+
+			et.rollback();
+		} finally {
+			em.close();
+		}
+		
+		
+		
 		return false;
 	}
 
@@ -60,7 +81,7 @@ public class DaoCommandeJPA implements Dao<Commande, String> {
 		}
 		{
 			listOfCommandes = em
-					.createQuery("select com from Commande com where com." + ref + " is null", Commande.class)
+					.createQuery("select com from Commande com where com." + ref + " is NULL", Commande.class)
 					.getResultList();
 		}
 

@@ -22,9 +22,7 @@ public class Commande {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name="numero_commande")
-	private Integer numero_commande;	
-	
+
 	
 	@Column(name="date_commande")
 	private Date dat_commande;
@@ -60,14 +58,6 @@ public class Commande {
 	}
 
 
-	public Integer getNumero_commande() {
-		return numero_commande;
-	}
-
-
-	public void setNumero_commande(Integer numero_commande) {
-		this.numero_commande = numero_commande;
-	}
 
 
 	public Date getDat_commande() {
@@ -112,7 +102,7 @@ public class Commande {
 
 	@Override
 	public String toString() {
-		return "Commande [id=" + id + ", numero_commande=" + numero_commande + ", dat_commande=" + dat_commande
+		return "Commande [id=" + id +", dat_commande=" + dat_commande
 				+ ", client_id=" + client_id + ", livreur=" + livreur + ", pizzas=" + pizzas + "]";
 	}
 	
