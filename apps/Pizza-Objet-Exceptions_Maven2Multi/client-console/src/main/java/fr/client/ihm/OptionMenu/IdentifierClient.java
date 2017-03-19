@@ -33,6 +33,7 @@ public class IdentifierClient extends OptionClient {
 		
 		if(pwd.equals(client.getMot_de_passe()))
 		{
+			ihmToolsClient.setClient(client);
 			ihmToolsClient.getMenuClient().printMenuCommande(ihmToolsClient);
 		}else
 		{

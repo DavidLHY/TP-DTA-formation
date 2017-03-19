@@ -2,13 +2,11 @@ package fr.client.ihm.tools;
 
 import java.util.Scanner;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import fr.client.ihm.MenuClient;
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.dao.DaoClientJPA;
+import fr.pizzeria.dao.DaoCommandeJPA;
 import fr.pizzeria.dao.IPizzaDaoJPA;
 import fr.pizzeria.modele.Client;
 import fr.pizzeria.modele.Commande;
@@ -21,6 +19,7 @@ public class IhmClientTools {
 	private MenuClient menuClient;
 	private DaoClient daoClient;
 	private Dao<Pizza,String> daoPizza;
+	private Dao<Commande,String> daoCommande;
 	private Commande commande;
 
 
@@ -31,6 +30,7 @@ public class IhmClientTools {
 		menuClient=new MenuClient();
 		daoClient = new DaoClientJPA();
 		daoPizza = new IPizzaDaoJPA();
+		daoCommande = new DaoCommandeJPA();
 	}
 	
 	public Dao<Pizza, String> getDaoPizza() {
@@ -70,6 +70,10 @@ public class IhmClientTools {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	public Dao<Commande, String> getDaoCommande() {
+		return daoCommande;
 	}
 
 }

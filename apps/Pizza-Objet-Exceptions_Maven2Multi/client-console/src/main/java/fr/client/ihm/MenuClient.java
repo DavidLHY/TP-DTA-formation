@@ -1,6 +1,7 @@
 package fr.client.ihm;
 
 
+
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Map.Entry;
@@ -24,6 +25,7 @@ public class MenuClient {
 		optionClient.put(2,new IdentifierClient());
 		optionClient.put(1,new InscriptionOptionClient());
 		optionClient.put(99,new ExitOptionClient());
+		
 		
 		optionCommande.put(1, new CommanderPizza());
 		optionCommande.put(99,new ExitOptionClient());

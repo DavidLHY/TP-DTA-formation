@@ -1,6 +1,7 @@
 package fr.pizzeria.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import fr.pizzeria.exception.DaoException;
 
@@ -22,6 +23,8 @@ public interface Dao<E, T> {
 		throw new DaoException("Non implémenté");
 	}
 	
-
+	default public Set<E> findby(T t1,T t3){
+		throw new DaoException("Non implementé");
+	};
 
 }

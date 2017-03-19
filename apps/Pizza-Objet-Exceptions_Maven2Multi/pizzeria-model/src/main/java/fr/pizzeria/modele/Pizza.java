@@ -2,6 +2,7 @@ package fr.pizzeria.modele;
 
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -23,14 +24,17 @@ public class Pizza {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	
+	@Column(name="reference")
 	private String code;
 	
+	@Column(name="libelle")
 	private String nom;
 	
+	@Column(name="prix")
 	private double prix;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(name="categorie")
 	private CategoriePizza categoriePizza;
 
 	public Pizza(int id, String code, String nom, double prix, CategoriePizza categoriePizza) {
