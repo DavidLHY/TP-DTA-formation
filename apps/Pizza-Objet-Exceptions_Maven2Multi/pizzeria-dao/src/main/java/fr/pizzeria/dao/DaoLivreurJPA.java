@@ -1,7 +1,5 @@
 package fr.pizzeria.dao;
 
-
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -15,17 +13,14 @@ import javax.persistence.Persistence;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.modele.Livreur;
 
-
 public class DaoLivreurJPA implements Dao<Livreur, String> {
 
 	private EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("david-pizzeria-model");
 
-
-	
 	@Override
 	public boolean save(Livreur livreur) {
 		// TODO Auto-generated method stub
-		
+
 		EntityManager em = emFactory.createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
@@ -36,12 +31,11 @@ public class DaoLivreurJPA implements Dao<Livreur, String> {
 		} catch (DaoException e) {
 
 			et.rollback();
-			throw new DaoException("probleme lors de l'ajout d'un livreur en base de donnees JPA",e);
+			throw new DaoException("probleme lors de l'ajout d'un livreur en base de donnees JPA", e);
 		} finally {
 			em.close();
 		}
-		
-		
+
 		return false;
 	}
 
@@ -56,34 +50,24 @@ public class DaoLivreurJPA implements Dao<Livreur, String> {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	@Override
-	public Set<Livreur> findby(String ref, Object val)
-	{
+	public Set<Livreur> findby(String ref, Object val) {
 		List<Livreur> listOfLivreur = new ArrayList<>();
 		EntityManager em = emFactory.createEntityManager();
-		if(!val.equals("all"))
-		{
-		if (!val.equals(null)) {
+		if (!val.equals("all")) {
+
 			listOfLivreur = em.createQuery("select liv from Livreur liv where liv." + ref + "=:val", Livreur.class)
 					.setParameter("val", val).getResultList();
-		}
-		{
-			listOfLivreur = em
-					.createQuery("select liv from Livreur liv where liv." + ref + " is null", Livreur.class)
-					.getResultList();
-		}
-		}else
-		{
-			listOfLivreur = em
-					.createQuery("select liv from Livreur liv", Livreur.class).getResultList();
+
+		} else {
+			listOfLivreur = em.createQuery("select liv from Livreur liv", Livreur.class).getResultList();
 		}
 
 		Set<Livreur> setOfLivreur = new HashSet<Livreur>(listOfLivreur);
 
 		return setOfLivreur;
-		
-		
+
 	}
 
 }
