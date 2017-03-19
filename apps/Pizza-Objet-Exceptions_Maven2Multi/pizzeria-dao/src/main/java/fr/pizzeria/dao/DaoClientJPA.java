@@ -32,6 +32,8 @@ public class DaoClientJPA implements DaoClient {
 		} catch (DaoException e) {
 		
 			et.rollback();
+			throw new DaoException(
+					"probleme lors de l'ajout d'un client en base de donnees JPA",e);
 		} finally {
 			em.close();
 		}

@@ -51,6 +51,9 @@ public class IPizzaDaoJPA implements Dao<Pizza, String> {
 		} catch (DaoException e) {
 
 			et.rollback();
+			throw new DaoException(
+					"probleme lors de l'ajout d'une pizza en base de donnees JPA",
+					e);
 		} finally {
 			em.close();
 		}
@@ -75,6 +78,8 @@ public class IPizzaDaoJPA implements Dao<Pizza, String> {
 		} catch (DaoException e) {
 
 			et.rollback();
+			throw new DaoException(	"probleme lors de la mise à jour d'une pizza en base de donnees JPA",
+					e);
 		} finally {
 			em.close();
 		}
@@ -99,6 +104,9 @@ public class IPizzaDaoJPA implements Dao<Pizza, String> {
 		} catch (DaoException e) {
 
 			et.rollback();
+			throw new DaoException(
+					"probleme lors de la suppression d'une pizza en base de donnees JPA",
+					e);
 		} finally {
 			em.close();
 		}

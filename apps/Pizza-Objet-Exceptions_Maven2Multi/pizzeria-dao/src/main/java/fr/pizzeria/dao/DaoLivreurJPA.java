@@ -13,7 +13,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import fr.pizzeria.exception.DaoException;
-import fr.pizzeria.modele.Commande;
 import fr.pizzeria.modele.Livreur;
 
 
@@ -37,6 +36,7 @@ public class DaoLivreurJPA implements Dao<Livreur, String> {
 		} catch (DaoException e) {
 
 			et.rollback();
+			throw new DaoException("probleme lors de l'ajout d'un livreur en base de donnees JPA",e);
 		} finally {
 			em.close();
 		}

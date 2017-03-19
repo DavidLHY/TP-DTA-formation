@@ -12,7 +12,7 @@ import javax.persistence.Persistence;
 
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.modele.Commande;
-import fr.pizzeria.modele.Pizza;
+
 
 public class DaoCommandeJPA implements Dao<Commande, String> {
 
@@ -31,6 +31,8 @@ public class DaoCommandeJPA implements Dao<Commande, String> {
 		} catch (DaoException e) {
 
 			et.rollback();
+			throw new DaoException(
+					"probleme lors de l'ajout d'une Commande en base de donnees JPA",e);
 		} finally {
 			em.close();
 		}
@@ -56,6 +58,8 @@ public class DaoCommandeJPA implements Dao<Commande, String> {
 		} catch (DaoException e) {
 
 			et.rollback();
+			throw new DaoException(
+					"probleme lors de la mise à jour d'une Commande en base de donnees JPA",e);
 		} finally {
 			em.close();
 		}
