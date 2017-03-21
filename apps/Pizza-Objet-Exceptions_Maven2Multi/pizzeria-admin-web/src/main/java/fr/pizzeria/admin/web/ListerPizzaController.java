@@ -12,31 +12,43 @@ import fr.pizzeria.dao.Dao;
 import fr.pizzeria.dao.IPizzaDaoJPA;
 import fr.pizzeria.modele.Pizza;
 
-
 public class ListerPizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Dao<Pizza, String> daoserv = new IPizzaDaoJPA();
-    
-    public ListerPizzaController() {
-        super();
-    }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-    	request.setAttribute("listPizzas", daoserv.findAll());
-    	
-    	
-    	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/pizzas/listerPizza.jsp");
-    	
-    	dispatcher.forward(request, response);
-    	
-
-    	
-    	
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	public ListerPizzaController() {
+		super();
 	}
 
-  
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		request.setAttribute("listPizzas", daoserv.findAll());
+
+		RequestDispatcher dispatcher = this.getServletContext()
+				.getRequestDispatcher("/WEB-INF/views/pizzas/listerPizza.jsp");
+
+		dispatcher.forward(request, response);
+
+		// response.getWriter().append("Served at:
+		// ").append(request.getContextPath());
+	}
+
+	@Override
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String code = (String) request.getAttribute("supprimerPizza");
+		
+		System.out.println(code);
+		RequestDispatcher dispatcher = this.getServletContext()
+				.getRequestDispatcher("/WEB-INF/views/pizzas/listerPizza.jsp");
+
+		dispatcher.forward(request, response);
+
+		// response.getWriter().append("Served at:
+		// ").append(request.getContextPath());
+	}
 
 }

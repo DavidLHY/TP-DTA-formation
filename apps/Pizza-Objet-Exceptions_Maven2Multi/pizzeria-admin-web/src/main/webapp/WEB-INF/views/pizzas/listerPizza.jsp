@@ -6,8 +6,8 @@
 
 <head>
 
-
-      <link href="listerPizza.css" rel="stylesheet"> 
+<link href="../bootstrapL/css/bootstrap.min.css" rel="stylesheet">
+<link href="../CSS/listerPizza.css" rel="stylesheet">
 
 <meta charset="utf-8">
 
@@ -17,19 +17,35 @@
 
 <body>
 
-<div>
-<h1> Liste des pizzas</h1>
+	<%!
+	 void supprimer(String code)
+	{
+		
+		//request.setAttribute("supprimerPizza", code);
+	}
+	
+	%>
 
-<%
-List<Pizza> pizzas =(List<Pizza>) request.getAttribute("listPizzas");
-%>
-<ul>
-<%for(Pizza current: pizzas) { %>
-	<li> <%= current.toString() %></li>
- <%}%>
-</ul>
+	<div>
+		<h1>Liste des pizzas</h1>
 
-</div>
+		<%
+			List<Pizza> pizzas = (List<Pizza>) request.getAttribute("listPizzas");
+		%>
+
+		<%
+			for (Pizza current : pizzas) {
+		%>
+		<div id="listPizza">
+			<%=current.toString()%> <button id="button" > Editer </button> <button id="button" onclick="supprimer(<%=current.getCode() %>)"> Supprimer </button>
+			
+		</div>
+		<%
+			}
+		%>
+
+
+	</div>
 
 </body>
 
