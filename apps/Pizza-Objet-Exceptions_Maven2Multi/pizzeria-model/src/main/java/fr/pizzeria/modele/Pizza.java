@@ -37,8 +37,7 @@ public class Pizza {
 	@Column(name="categorie")
 	private CategoriePizza categoriePizza;
 
-	public Pizza(int id, String code, String nom, double prix, CategoriePizza categoriePizza) {
-		this.id = id;
+	public Pizza( String code, String nom, double prix, CategoriePizza categoriePizza) {
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
@@ -108,6 +107,11 @@ public class Pizza {
 
 	public void setCategoriePizza(CategoriePizza categoriePizza) {
 		this.categoriePizza = categoriePizza;
+	}
+	
+	@Override
+	public String toString() {
+		return "" + code + ", " + nom + ", " + prix + "," + categoriePizza ;
 	}
 
 }

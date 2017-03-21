@@ -33,12 +33,12 @@ public class IPizzaDaoBD implements Dao<Pizza,String> {
 
 			while (resultats.next()) {
 
-				Integer id = resultats.getInt("ID");
+				
 				String code = resultats.getString("code");
 				String name = resultats.getString("nom");
 				double price = resultats.getDouble("prix");
 				String categorie = resultats.getString("categoriePizza");
-				listOfPizza.add(new Pizza(id, code, name, price, CategoriePizza
+				listOfPizza.add(new Pizza(code, name, price, CategoriePizza
 						.valueOf(categorie)));
 			}
 

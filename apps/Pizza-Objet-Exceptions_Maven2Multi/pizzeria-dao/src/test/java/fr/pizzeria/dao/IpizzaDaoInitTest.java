@@ -31,7 +31,7 @@ public class IpizzaDaoInitTest {
 	@Test
 	public void test_save() {
 		List<Pizza> listPizza = pizzaDao.findAll();
-		Pizza pz = new Pizza(5, "SEV", "Savoyarde", 13.00, CategoriePizza.VIANDE);
+		Pizza pz = new Pizza( "SEV", "Savoyarde", 13.00, CategoriePizza.VIANDE);
 
 		pizzaDao.save(pz);
 		assertEquals(9, listPizza.size());

@@ -13,7 +13,7 @@ public class PizzaTest {
 	@Test
 	public void testHashCode() {
 		Set<Pizza> sets = new HashSet<>();
-		Pizza p1 = new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE);
+		Pizza p1 = new Pizza( "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE);
 		
 
 		sets.add(p1);
@@ -23,7 +23,7 @@ public class PizzaTest {
 	@Test
 	public void testEqualsPizza() {
 		Set<Pizza> sets = new HashSet<>();
-		Pizza p1 = new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE);
+		Pizza p1 = new Pizza( "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE);
 	
 
 		sets.add(p1);
