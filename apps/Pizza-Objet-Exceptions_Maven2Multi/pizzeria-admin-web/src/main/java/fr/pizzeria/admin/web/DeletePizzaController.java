@@ -12,30 +12,38 @@ import fr.pizzeria.dao.Dao;
 import fr.pizzeria.dao.IPizzaDaoJPA;
 import fr.pizzeria.modele.Pizza;
 
-public class ListerPizzaController extends HttpServlet {
+/**
+ * Servlet implementation class DeletePizzaController
+ */
+public class DeletePizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Dao<Pizza, String> daoserv = new IPizzaDaoJPA();
 
-	public ListerPizzaController() {
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public DeletePizzaController() {
 		super();
+
 	}
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setAttribute("listPizzas", daoserv.findAll());
+		String code = request.getParameter("code");
 
-		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/pizzas/listerPizza.jsp");
-
-		dispatcher.forward(request, response);
+		daoserv.delete(code);
+		
+		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 		
 		
-
 		
 	}
-
 
 
 }

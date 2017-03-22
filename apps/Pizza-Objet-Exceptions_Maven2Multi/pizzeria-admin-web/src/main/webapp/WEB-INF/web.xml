@@ -18,6 +18,25 @@
   	<servlet-class>fr.pizzeria.admin.web.ListerPizzaController</servlet-class>
   </servlet>
   
+  <servlet>
+  	<servlet-name>EditerPizza</servlet-name>
+  	<display-name>EditerPizzaController</display-name>
+  	<description></description>
+  	<servlet-class>fr.pizzeria.admin.web.EditerPizzaController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>DeletePizza</servlet-name>
+  	<display-name>DeletePizzaController</display-name>
+  	<description></description>
+  	<servlet-class>fr.pizzeria.admin.web.DeletePizzaController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SavePizzaController</servlet-name>
+  	<display-name>SavePizzaController</display-name>
+  	<description></description>
+  	<servlet-class>fr.pizzeria.admin.web.SavePizzaController</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
   	<servlet-name>PizzaServletWebApi</servlet-name>
   	<url-pattern>/api/servlet/pizzas</url-pattern>
@@ -26,6 +45,19 @@
   <servlet-mapping>
   	<servlet-name>ListerPizza</servlet-name>
   	<url-pattern>/pizzas/list</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>EditerPizza</servlet-name>
+  	<url-pattern>/pizzas/edit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeletePizza</servlet-name>
+  	<url-pattern>/pizzas/delete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SavePizzaController</servlet-name>
+  	<url-pattern>/pizzas/save</url-pattern>
   </servlet-mapping>
   
 </web-app>

@@ -17,15 +17,7 @@
 
 <body>
 
-	<%!
-	 void supprimer(String code)
-	{
-		
-		//request.setAttribute("supprimerPizza", code);
-	}
 	
-	%>
-
 	<div>
 		<h1>Liste des pizzas</h1>
 
@@ -37,12 +29,18 @@
 			for (Pizza current : pizzas) {
 		%>
 		<div id="listPizza">
-			<%=current.toString()%> <button id="button" > Editer </button> <button id="button" onclick="supprimer(<%=current.getCode() %>)"> Supprimer </button>
+			<%=current.toString()%> <a id="button" href="http://localhost:8080/pizzeria-admin-web/pizzas/edit?code=<%=current.getCode()%>"  class="btn btn-info"><span class="glyphicon glyphicon-th-list"></span> Editer </a>
+			 <a id="button" href="http://localhost:8080/pizzeria-admin-web/pizzas/delete?code=<%=current.getCode()%>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>  Supprimer </a>
 			
 		</div>
 		<%
 			}
 		%>
+		<div id="button">
+			
+			 <a id="button" href="http://localhost:8080/pizzeria-admin-web/pizzas/save" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Ajouter</a>
+			
+		</div>
 
 
 	</div>
