@@ -28,7 +28,7 @@ public class EditerPizzaController extends HttpServlet {
 		this.code = request.getParameter("code");
 		
 		
-		request.setAttribute("editPizzas", daoserv.findby("code",this.code).iterator().next());
+		request.setAttribute("editPizza", daoserv.findby("code",this.code).iterator().next());
 
 		RequestDispatcher dispatcher = this.getServletContext()
 				.getRequestDispatcher("/WEB-INF/views/pizzas/editerPizza.jsp");

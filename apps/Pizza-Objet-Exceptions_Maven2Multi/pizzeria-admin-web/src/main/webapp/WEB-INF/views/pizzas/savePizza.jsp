@@ -2,6 +2,8 @@
 
 <%@page import="fr.pizzeria.modele.Pizza"%>
 <%@page import="java.util.List"%>
+<%@ page pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 
 <head>
@@ -18,7 +20,7 @@
 
 <body>
 
-	<h1>Edition de la référence </h1>
+	<h1>Edition de la rÃ©fÃ©rence </h1>
 	<div>
 
 

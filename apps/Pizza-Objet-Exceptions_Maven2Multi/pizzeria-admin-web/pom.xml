@@ -23,23 +23,28 @@
 			<artifactId>servlet-api</artifactId>
 		</dependency>
 
-		
+
 		<dependency>
 			<groupId>david-Pizzeria</groupId>
 			<artifactId>david-pizzeria-model</artifactId>
 			<version>1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>david-Pizzeria</groupId>
 			<artifactId>david-pizzeria-dao</artifactId>
 			<version>1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>david-Pizzeria</groupId>
 			<artifactId>david-client-console</artifactId>
 			<version>1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
 		</dependency>
 
 
