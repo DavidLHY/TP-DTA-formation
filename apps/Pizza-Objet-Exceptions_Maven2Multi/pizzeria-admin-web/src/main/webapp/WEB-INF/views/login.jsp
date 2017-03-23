@@ -8,7 +8,7 @@
 
 <head>
 
-<link href="../bootstrapL/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrapL/css/bootstrap.min.css" rel="stylesheet">
 <link href="CSS/listerPizza.css" rel="stylesheet">
 
 <meta charset="utf-8">
@@ -20,9 +20,9 @@
 
 <body>
 
+	
+	<div class="container">
 	<h1>Login</h1>
-	<div>
-
 
 		<form method="post">
 			<label for="admin"> Identifiant : </label> <input id="admin" name="admin" type="text"> 

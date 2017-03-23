@@ -44,21 +44,25 @@
 					class="form-control" type="number" value="${editPizza.prix}">
 			</div>
 
-			<div class="form-group">
-				<label for="categorie">Categorie :</label> <input id="categorie"
-					class="form-control" name="categorie" type="text"
-					value="${editPizza.categoriePizza.name()}">
-			</div>
 
 			<div class="form-group">
-				<select name="cars" class="form-control">
-					<option value="volvo">Volvo</option>
-					<option value="saab">Saab</option>
-					<option value="fiat">Fiat</option>
-					<option value="audi">Audi</option>
+				<label for="categorie">Categorie : </label>
+				<select id="categorie" class="form-control" name="categorie">
+					<c:forEach var="current" items="${categoriePizza}">
+						<c:choose>
+						<c:when test="${editPizza.categoriePizza.name().equals(current.name())}">
+							<option selected value="${current}">${current.name()}</option>
+						</c:when>
+						<c:otherwise>
+							<option  value="${current}">${current.name()}</option>
+						</c:otherwise>	
+						</c:choose>
+						
+					</c:forEach>
 				</select>
 			</div>
-			${categoriePizza} <input type="submit" value="Valider">
+
+			<input type="submit" value="Valider">
 		</form>
 
 

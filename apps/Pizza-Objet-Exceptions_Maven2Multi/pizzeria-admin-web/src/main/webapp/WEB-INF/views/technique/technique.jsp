@@ -8,7 +8,7 @@
 
 <head>
 
-<link href="../bootstrapL/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrapL/css/bootstrap.min.css" rel="stylesheet">
 <link href="CSS/listerPizza.css" rel="stylesheet">
 
 <meta charset="utf-8">
@@ -26,10 +26,8 @@
 
 		<h1>Operateur Technique</h1>
 
-	    Nombre de sessions ouvertes : ${applicationScope.compteur}		
-
-		
-
+		Nombre de sessions ouvertes : ${nbSession}
+		<div>${tempsReq} ${cheminReq}</div>
 
 	</div>
 

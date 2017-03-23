@@ -18,6 +18,7 @@ public class LoginFilter implements Filter {
 
 	private FilterConfig config=null;
 	
+	
 	@Override
 	public void init(FilterConfig config) throws ServletException {
 		
