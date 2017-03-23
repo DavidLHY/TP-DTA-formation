@@ -33,7 +33,7 @@
 			<c:forEach var="entry" items="${listPizzas.entrySet()}">
 
 				<div class="panel-heading">
-					<p>${entry.getKey().toString()}</p>
+					<h4>${entry.getKey().toString()}</h4>
 				</div>
 
 				<table class="table table-striped">

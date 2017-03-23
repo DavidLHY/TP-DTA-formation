@@ -26,5 +26,9 @@ public interface Dao<E, T> {
 	default public Set<E> findby(T t1,Object t3){
 		throw new DaoException("Non implementé");
 	};
+	
+	default public Set<Object> findCat(T t1){
+		throw new DaoException("Non implementé");
+	};
 
 }

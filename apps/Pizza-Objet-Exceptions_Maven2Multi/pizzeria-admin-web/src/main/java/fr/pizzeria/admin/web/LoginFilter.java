@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns={"/pizzas/*" , "/login" , "/technique"})
+@WebFilter(urlPatterns={"/pizzas/*" , "/logout" , "/technique"})
 public class LoginFilter implements Filter {
 
 	private FilterConfig config=null;

@@ -1,6 +1,7 @@
 package fr.pizzeria.admin.web;
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,9 +31,11 @@ public class EditerPizzaController extends HttpServlet {
 
 		this.code = request.getParameter("code");
 		
+		Set<Object> setCategorie = daoserv.findCat("categoriePizza");
 		
 		request.setAttribute("editPizza", daoserv.findby("code",this.code).iterator().next());
-
+		request.setAttribute("categoriePizza", setCategorie);
+		
 		RequestDispatcher dispatcher = this.getServletContext()
 				.getRequestDispatcher("/WEB-INF/views/pizzas/editerPizza.jsp");
 

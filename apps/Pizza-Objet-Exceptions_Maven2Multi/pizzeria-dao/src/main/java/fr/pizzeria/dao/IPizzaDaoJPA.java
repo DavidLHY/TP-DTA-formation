@@ -11,6 +11,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import fr.pizzeria.exception.DaoException;
+import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
 
 public class IPizzaDaoJPA implements Dao<Pizza, String> {
@@ -125,5 +126,17 @@ public class IPizzaDaoJPA implements Dao<Pizza, String> {
 		
 		return setOfPizza;
 	}
+	
+	@Override
+	public Set<Object> findCat(String categorie){
+		List<Object> listOfCategorie= new ArrayList<>();
+		EntityManager em = emFactory.createEntityManager();
+		listOfCategorie = em.createQuery("select "+categorie+" from Pizza piz",Object.class).getResultList();
+		
+		Set<Object> setOfCategorie= new HashSet<Object>(listOfCategorie);
+		
+		return setOfCategorie;
+	}
+	
 
 }

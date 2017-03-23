@@ -30,7 +30,8 @@
 
 			<div class="form-group">
 				<label for="newcode">Code :</label> <input id="newcode"
-					class="form-control" name="newcode" type="text" value="${editPizza.code}">
+					class="form-control" name="newcode" type="text"
+					value="${editPizza.code}">
 			</div>
 
 			<div class="form-group">
@@ -40,18 +41,24 @@
 
 			<div class="form-group">
 				<label for="prix">Prix : </label> <input id="number" name="prix"
-				class="form-control" 	type="number" value="${editPizza.prix}">
+					class="form-control" type="number" value="${editPizza.prix}">
 			</div>
 
 			<div class="form-group">
 				<label for="categorie">Categorie :</label> <input id="categorie"
-				class="form-control"	name="categorie" type="text"
+					class="form-control" name="categorie" type="text"
 					value="${editPizza.categoriePizza.name()}">
 			</div>
 
-
-
-			<input type="submit" value="Valider">
+			<div class="form-group">
+				<select name="cars" class="form-control">
+					<option value="volvo">Volvo</option>
+					<option value="saab">Saab</option>
+					<option value="fiat">Fiat</option>
+					<option value="audi">Audi</option>
+				</select>
+			</div>
+			${categoriePizza} <input type="submit" value="Valider">
 		</form>
 
 
