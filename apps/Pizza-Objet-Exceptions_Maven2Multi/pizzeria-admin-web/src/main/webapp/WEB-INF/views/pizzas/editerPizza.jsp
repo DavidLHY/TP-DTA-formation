@@ -20,29 +20,41 @@
 
 <body>
 
-	<h1>Edition de la référence </h1>
-	<div>
 
-		
-		<form method="post" >
-		<label for="newcode">Code :</label>
-		<input id="newcode" name="newcode" type="text" value="${editPizza.code}" >
-		
-		<label for="ref">Nom :</label>
-		<input id="ref" name="ref" type="text" value="${editPizza.nom}">
-		
-		<label for="prix">Prix : </label>
-		<input id="number" name="prix" type="number" value="${editPizza.prix}" >
-		
-		<label for="categorie">Categorie :</label>
-		<input id="categorie" name="categorie" type="text" value="${editPizza.categoriePizza.name()}"  >
-		
-		 
-		
-		
-		<input type="submit" value="Valider">
+
+	<div class="container">
+
+		<h1>Edition de la référence</h1>
+
+		<form method="post">
+
+			<div class="form-group">
+				<label for="newcode">Code :</label> <input id="newcode"
+					class="form-control" name="newcode" type="text" value="${editPizza.code}">
+			</div>
+
+			<div class="form-group">
+				<label for="ref">Nom :</label> <input id="ref" name="ref"
+					class="form-control" type="text" value="${editPizza.nom}">
+			</div>
+
+			<div class="form-group">
+				<label for="prix">Prix : </label> <input id="number" name="prix"
+				class="form-control" 	type="number" value="${editPizza.prix}">
+			</div>
+
+			<div class="form-group">
+				<label for="categorie">Categorie :</label> <input id="categorie"
+				class="form-control"	name="categorie" type="text"
+					value="${editPizza.categoriePizza.name()}">
+			</div>
+
+
+
+			<input type="submit" value="Valider">
 		</form>
-		
+
+
 
 
 	</div>

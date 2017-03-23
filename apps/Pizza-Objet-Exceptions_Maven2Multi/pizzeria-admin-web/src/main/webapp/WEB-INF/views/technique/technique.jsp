@@ -20,17 +20,15 @@
 
 <body>
 
-	<h1>Login</h1>
-	<div>
 
 
-		<form method="post">
-			<label for="admin"> Identifiant : </label> <input id="admin" name="admin" type="text"> 
-				<label for="pwd">Mot de	passe :</label>
-				 <input id="pwd" name="pwd" type="text"> 
-				 <input	type="submit" value="Valider">
-		</form>
+	<div class="container">
 
+		<h1>Operateur Technique</h1>
+
+	    Nombre de sessions ouvertes : ${applicationScope.compteur}		
+
+		
 
 
 	</div>

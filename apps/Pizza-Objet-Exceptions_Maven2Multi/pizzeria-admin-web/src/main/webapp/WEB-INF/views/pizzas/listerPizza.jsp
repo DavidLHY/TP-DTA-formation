@@ -80,6 +80,13 @@
 				Ajouter</a>
 
 		</div>
+		<div id="button" class="container">
+
+			<a id="button" href=<c:url value='/logout'/>
+				class="btn btn-danger"><span class="glyphicon glyphicon-ok"></span>
+				LogOut</a>
+
+		</div>
 
 	</div>
 

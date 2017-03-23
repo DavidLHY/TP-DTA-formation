@@ -8,12 +8,12 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- * Servlet Filter implementation class LoginFilter
- */
+@WebFilter(urlPatterns={"/pizzas/*" , "/login" , "/technique"})
 public class LoginFilter implements Filter {
 
 	private FilterConfig config=null;
@@ -22,7 +22,7 @@ public class LoginFilter implements Filter {
 	public void init(FilterConfig config) throws ServletException {
 		
 		this.config= config;
-		config.getServletContext().log("coucou");
+		this.config.getServletContext().log("coucou");
 		
 	}
 	
@@ -37,9 +37,8 @@ public class LoginFilter implements Filter {
 			
 			httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");		
 		} else {
-			
-			chain.doFilter(request, response);
-			
+			this.config.getServletContext().log("bien identifier");
+			chain.doFilter(request, response);			
 		}
 		
 		

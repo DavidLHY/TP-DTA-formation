@@ -13,6 +13,15 @@ h2{
 	font-family: Helvetica;
 }
 
+div#container{
+	background-color: white;
+	
+	font-family: Helvetica;
+	border-width: 1px;
+	border-style:  solid ;
+	border-color: black;
+}
+
 div#listPizza {
 	background-color: white;
 	text-align: center;

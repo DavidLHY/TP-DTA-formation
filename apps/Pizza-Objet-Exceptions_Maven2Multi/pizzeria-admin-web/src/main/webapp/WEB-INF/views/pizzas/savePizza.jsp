@@ -20,23 +20,23 @@
 
 <body>
 
-	<h1>Edition de la référence </h1>
-	<div>
+	
+	<div class="container">
 
-
+<h1>Edition de la référence </h1>
 		
 		<form method="post" >
 		<label for="newcode">Code :</label>
-		<input id="newcode" name="newcode" type="text" placeholder="Code" >
+		<input class="form-control" id="newcode" name="newcode" type="text" placeholder="Code" >
 		
 		<label for="ref">Nom :</label>
-		<input id="ref" name="ref" type="text" placeholder="Nom" >
+		<input class="form-control" id="ref" name="ref" type="text" placeholder="Nom" >
 		
 		<label for="prix">Prix : </label>
-		<input id="prix" name="prix" type="text" placeholder="prix" >
+		<input class="form-control" id="prix" name="prix" type="text" placeholder="prix" >
 		
 		<label for="categorie">Categorie :</label>
-		<input id="categorie" name="categorie" type="text" placeholder="categorie" >
+		<input class="form-control" id="categorie" name="categorie" type="text" placeholder="categorie" >
 		
 		<input type="submit" value="Valider">
 		</form>
