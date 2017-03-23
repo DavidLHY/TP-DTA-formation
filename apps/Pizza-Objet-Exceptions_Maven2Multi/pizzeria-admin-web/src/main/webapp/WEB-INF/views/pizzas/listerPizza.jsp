@@ -73,21 +73,23 @@
 
 		</div>
 
-		<div id="button" >
+		<div id="button">
 
 			<a id="button" href=<c:url value='/pizzas/save'/>
 				class="btn btn-success"><span class="glyphicon glyphicon-ok"></span>
 				Ajouter</a>
 
-		</div>
-		<div id="button" >
 
-			<a id="button" href=<c:url value='/logout'/>
-				class="btn btn-danger"><span class="glyphicon glyphicon-ok"></span>
-				LogOut</a>
+			<a id="button" href=<c:url value='/logout'/> class="btn btn-danger"><span
+				class="glyphicon glyphicon-ok"></span> LogOut</a>
+				
+			 <a id="button"	href=<c:url value='/technique'/> class="btn btn-primary"><span
+				class="glyphicon glyphicon-ok"></span> Technique</a>
+
 
 		</div>
-		
+
+		<div id="button"></div>
 
 	</div>
 

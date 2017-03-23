@@ -2,6 +2,7 @@ package fr.pizzeria.admin.metier;
 
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import java.util.Set;
@@ -10,7 +11,9 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import fr.pizzeria.admin.web.event.EventAction;
+import fr.pizzeria.admin.web.event.DeletePizzaEvent;
+import fr.pizzeria.admin.web.event.SavePizzaEvent;
+import fr.pizzeria.admin.web.event.UpdatePizzaEvent;
 import fr.pizzeria.dao.Dao;
 
 import fr.pizzeria.modele.Pizza;
@@ -18,12 +21,13 @@ import fr.pizzeria.modele.Pizza;
 public class PizzaService {
 
 	private LocalDateTime localTime;
-	//@Inject private EventAction eventAction;	
 
 	@Inject	private Dao<Pizza, String> pizzaDao;
 	
-	@Inject private Event<Pizza> eventPizza;
-
+	@Inject private Event<SavePizzaEvent> savePizzaEvent;
+	@Inject private Event<UpdatePizzaEvent> updatePizzaEvent;
+	@Inject private Event<DeletePizzaEvent> deletePizzaEvent;
+	
 	public List<Pizza> findAll() {
 		return pizzaDao.findAll();
 	}
@@ -37,13 +41,20 @@ public class PizzaService {
 	public void save(Pizza pizza) {
 
 		pizzaDao.save(pizza);
-		eventPizza.fire(pizza);
+		
+		SavePizzaEvent event = new SavePizzaEvent();
+		event.setLocalTime(LocalDateTime.now());
+		event.setPizza(pizza);
+		savePizzaEvent.fire(event);
+		
 
 	}
 
 	public Set<Object> findCat(String string) {
 
 		return pizzaDao.findCat(string);
+		
+		
 
 	}
 
@@ -51,15 +62,27 @@ public class PizzaService {
 
 		pizzaDao.update(code, pizza);
 		
+		UpdatePizzaEvent event = new UpdatePizzaEvent();
+		event.setLocalTime(LocalDateTime.now());
+		event.setPizza(pizza);
+		updatePizzaEvent.fire(event);
+		
+	}
+
+	public void delete(String code) {
+		
+		Pizza pizza = pizzaDao.findby("code",code).iterator().next();
+		pizzaDao.delete(code);
+		
+		DeletePizzaEvent event = new DeletePizzaEvent();
+		event.setLocalTime(LocalDateTime.now());
+		event.setPizza(pizza);
+		deletePizzaEvent.fire(event);
+		
+		
 	}
 	
-	public void savePizzaEvent(@Observes Pizza event) {
-
-		localTime=LocalDateTime.now();
-		System.out.println("Pizza Ajout");
-		System.out.println(event +"  "+ localTime);
-
-		}
+	
 	
 	
 

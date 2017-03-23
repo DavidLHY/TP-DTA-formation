@@ -2,6 +2,7 @@ package fr.pizzeria.admin.web;
 
 import java.io.IOException;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -36,9 +37,12 @@ public class EditerPizzaController extends HttpServlet {
 
 		this.code = request.getParameter("code");
 		
-		Set<Object> setCategorie = pizzaService.findCat("categoriePizza");
+		Set<Object> setCategorie = new TreeSet<>();
 		
-		
+		for(CategoriePizza current:CategoriePizza.values())
+		{
+			setCategorie.add(current);
+		}
 		
 		request.setAttribute("editPizza", pizzaService.findby("code",this.code).iterator().next());
 		request.setAttribute("categoriePizza", setCategorie);
