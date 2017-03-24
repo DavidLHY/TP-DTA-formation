@@ -20,40 +20,45 @@
 
 <body>
 
-	
+
 	<div class="container">
 
-<h1>Edition de la référence </h1>
-		
-		<form method="post" >
-		<label for="newcode">Code :</label>
-		<input class="form-control" id="newcode" name="newcode" type="text" placeholder="Code" >
-		
-		<label for="ref">Nom :</label>
-		<input class="form-control" id="ref" name="ref" type="text" placeholder="Nom" >
-		
-		<label for="prix">Prix : </label>
-		<input class="form-control" id="prix" name="prix" type="text" placeholder="prix" >
-		
-		<div class="form-group">
-				<label for="categorie">Categorie : </label>
-				<select id="categorie" class="form-control" name="categorie">
+		<h1>Edition de la référence</h1>
+
+		<form method="post">
+			<label for="newcode">Code :</label> <input class="form-control"
+				id="newcode" name="newcode" type="text" placeholder="Code">
+
+			<label for="ref">Nom :</label> <input class="form-control" id="ref"
+				name="ref" type="text" placeholder="Nom"> <label for="prix">Prix
+				: </label> <input class="form-control" id="prix" name="prix" type="text"
+				placeholder="prix">
+
+			<div class="form-group">
+				<label for="categorie">Categorie : </label> <select id="categorie"
+					class="form-control" name="categorie">
 					<c:forEach var="current" items="${categoriePizza}">
 						<c:choose>
-						<c:when test="${editPizza.categoriePizza.name().equals(current.name())}">
-							<option selected value="${current}">${current.name()}</option>
-						</c:when>
-						<c:otherwise>
-							<option  value="${current}">${current.name()}</option>
-						</c:otherwise>	
+							<c:when
+								test="${editPizza.categoriePizza.name().equals(current.name())}">
+								<option selected value="${current}">${current.name()}</option>
+							</c:when>
+							<c:otherwise>
+								<option value="${current}">${current.name()}</option>
+							</c:otherwise>
 						</c:choose>
-						
+
 					</c:forEach>
 				</select>
 			</div>
-		<input type="submit" value="Valider">
+			<div class="form-group">
+
+				<label class="control-label">Images :</label> <input id="urlImage"
+					type="file" class="file">
+			</div>
+			<input type="submit" value="Valider">
 		</form>
-		
+
 
 
 	</div>

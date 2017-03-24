@@ -33,10 +33,15 @@ public class Pizza {
 	@Column(name="prix")
 	private double prix;
 	
+	@Column(name="url_image")
+	private String urlImage;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(name="categorie")
 	private CategoriePizza categoriePizza;
 
+
+	
 	public Pizza( String code, String nom, double prix, CategoriePizza categoriePizza) {
 		this.code = code;
 		this.nom = nom;

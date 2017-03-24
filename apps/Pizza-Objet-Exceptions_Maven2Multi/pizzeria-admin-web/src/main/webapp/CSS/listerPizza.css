@@ -2,24 +2,14 @@ body {
 	background-color: #FFE4C4;
 }
 
-h1 {
-	color: blue;
-	font-family: Helvetica;
-}
-
-h2{
+h {
 	
-	color: 	#6B8E23;
 	font-family: Helvetica;
 }
 
-div[class="containers"]{
-	background-color: white;	
-	font-family: Helvetica;
-	border-width: 1px;
-	border-style:  solid ;
-	border-color: black;
-}
+
+
+
 
 div#listPizza {
 	background-color: white;
@@ -39,4 +29,16 @@ div#nomPizza {
 	border-width: 1px;
 	border-style:  solid ;
 	border-color: black;
+}
+
+div[class="white"]
+{
+	background-color: white;
+	font-family: Helvetica;
+	font-size: 150%;
+	border-width: 1px;
+	border-style:  solid ;
+	border-color: black;
+	
+	
 }

@@ -26,14 +26,16 @@ public class TechniqueServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		
-		
-		
-		//List<Long> tempsReq = (List<Long>) request.getSession().getServletContext().getAttribute("tempsReq");
-		//List<String> cheminReq = (List<String>) request.getSession().getServletContext().getAttribute("cheminReq");
+		Integer compteur = (Integer) request.getSession().getServletContext().getAttribute("compteur");		
+		List<Long> tempsReq = (List<Long>) request.getSession().getServletContext().getAttribute("tempsReq");
+		List<String> cheminReq = (List<String>) request.getSession().getServletContext().getAttribute("cheminReq");
 		
 
-		//request.setAttribute("tempsReq", tempsReq);
-		//request.setAttribute("cheminReq", cheminReq);
+		
+		request.setAttribute("nbSession", compteur);
+		request.setAttribute("tempsReq", tempsReq);
+		request.setAttribute("cheminReq", cheminReq);
+		
 		
 		request.setAttribute("stats", pServ);
 		

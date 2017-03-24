@@ -11,7 +11,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import fr.pizzeria.exception.DaoException;
-import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
 
 public class IPizzaDaoJPA implements Dao<Pizza, String> {

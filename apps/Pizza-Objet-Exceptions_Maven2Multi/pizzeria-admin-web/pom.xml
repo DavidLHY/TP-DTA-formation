@@ -39,12 +39,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>david-Pizzeria</groupId>
-			<artifactId>david-client-console</artifactId>
-			<version>1</version>
-		</dependency>
-
-		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>

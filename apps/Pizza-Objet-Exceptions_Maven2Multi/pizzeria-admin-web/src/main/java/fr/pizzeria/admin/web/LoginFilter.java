@@ -23,7 +23,7 @@ public class LoginFilter implements Filter {
 	public void init(FilterConfig config) throws ServletException {
 		
 		this.config= config;
-		this.config.getServletContext().log("coucou");
+		this.config.getServletContext().log("passage login");
 		
 	}
 	

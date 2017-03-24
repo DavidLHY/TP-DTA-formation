@@ -20,17 +20,22 @@
 
 <body>
 
-	
+
 	<div class="container">
-	<h1>Login</h1>
-
-		<form method="post">
-			<label for="admin"> Identifiant : </label> <input id="admin" name="admin" type="text"> 
-				<label for="pwd">Mot de	passe :</label>
-				 <input id="pwd" name="pwd" type="text"> 
-				 <input	type="submit" value="Valider">
-		</form>
-
+		<h1>Login</h1>
+		<div class="white">
+			<form method="post">
+				<div class="form-group">
+					<label for="admin"> Identifiant : </label> <input id="admin"
+						class="form-control" name="admin" type="text">
+				</div>
+				<div class="form-group">
+					<label for="pwd">Mot de passe :</label> <input id="pwd" name="pwd"
+						class="form-control" type="text">
+				</div>
+				<input class="btn btn-primary" type="submit" value="Valider">
+			</form>
+		</div>
 
 
 	</div>
