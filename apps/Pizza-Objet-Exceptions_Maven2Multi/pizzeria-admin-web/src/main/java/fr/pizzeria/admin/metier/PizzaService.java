@@ -12,17 +12,19 @@ import javax.enterprise.event.Event;
 
 import javax.inject.Inject;
 
+
 import fr.pizzeria.admin.web.event.DeletePizzaEvent;
 import fr.pizzeria.admin.web.event.SavePizzaEvent;
 import fr.pizzeria.admin.web.event.UpdatePizzaEvent;
-import fr.pizzeria.dao.Dao;
+
 
 import fr.pizzeria.modele.Pizza;
+
 
 public class PizzaService {
 
 
-	//@Inject	private Dao<Pizza, String> pizzaDao;
+
 	@EJB private PizzaServiceEJB pizzaEJB;
 	
 	
@@ -30,11 +32,13 @@ public class PizzaService {
 	@Inject private Event<UpdatePizzaEvent> updatePizzaEvent;
 	@Inject private Event<DeletePizzaEvent> deletePizzaEvent;
 	
+
 	public List<Pizza> findAll() {
 		return pizzaEJB.findAll();
 		
 	}
 
+	
 	public Set<Pizza> findby(String string, String code) {
 
 		return pizzaEJB.findby(string, code);

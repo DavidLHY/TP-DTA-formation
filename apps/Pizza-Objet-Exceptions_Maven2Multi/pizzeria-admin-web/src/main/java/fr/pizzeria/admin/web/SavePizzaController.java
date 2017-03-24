@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.pizzeria.admin.metier.PizzaService;
-import fr.pizzeria.dao.Dao;
-import fr.pizzeria.dao.IPizzaDaoJPA;
+
 import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
 

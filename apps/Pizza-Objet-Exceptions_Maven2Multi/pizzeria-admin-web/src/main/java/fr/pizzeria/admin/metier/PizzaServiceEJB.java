@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.ws.rs.Path;
 
 import fr.pizzeria.modele.Pizza;
 
@@ -15,6 +16,7 @@ public class PizzaServiceEJB {
 
 	@PersistenceContext(unitName = "pizzeria")
 	private EntityManager em;
+
 
 	public List<Pizza> findAll() {
 
