@@ -22,8 +22,10 @@
 
 
 	<div class="container">
-		<h1>Login</h1>
+		
 		<div class="white">
+		<h1>Login</h1>
+		
 			<form method="post">
 				<div class="form-group">
 					<label for="admin"> Identifiant : </label> <input id="admin"
@@ -31,7 +33,7 @@
 				</div>
 				<div class="form-group">
 					<label for="pwd">Mot de passe :</label> <input id="pwd" name="pwd"
-						class="form-control" type="text">
+						class="form-control" type="password">
 				</div>
 				<input class="btn btn-primary" type="submit" value="Valider">
 			</form>

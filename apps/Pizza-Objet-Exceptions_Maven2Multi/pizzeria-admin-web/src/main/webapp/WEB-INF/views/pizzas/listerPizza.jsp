@@ -26,7 +26,9 @@
 
 
 	<div class="container">
-		<h1>Liste des Pizzas</h1>
+		<div class="jumbotron">
+			<h1>Liste des Pizzas</h1>
+		</div>
 		<div class="panel panel-primary">
 			<!-- Default panel contents -->
 
@@ -59,7 +61,7 @@
 							<td><a
 								href=<c:url value='/pizzas/edit?code=${current.code}'/>
 								class="btn btn-info"><span
-									class="glyphicon glyphicon-th-list"></span> Editer </a> <a
+									class="glyphicon glyphicon-edit"></span> Editer </a> <a
 								id="button"
 								href=<c:url value='/pizzas/delete?code=${current.code}'/>
 								class="btn btn-danger"><span
@@ -77,14 +79,11 @@
 
 			<a id="button" href=<c:url value='/pizzas/save'/>
 				class="btn btn-success"><span class="glyphicon glyphicon-ok"></span>
-				Ajouter</a>
-
-
-			<a id="button" href=<c:url value='/logout'/> class="btn btn-danger"><span
-				class="glyphicon glyphicon-ok"></span> LogOut</a>
-				
-			 <a id="button"	href=<c:url value='/technique'/> class="btn btn-primary"><span
-				class="glyphicon glyphicon-ok"></span> Technique</a>
+				Ajouter</a> <a id="button" href=<c:url value='/logout'/>
+				class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span>
+				LogOut</a> <a id="button" href=<c:url value='/technique'/>
+				class="btn btn-primary"><span class="glyphicon glyphicon-list"></span>
+				Technique</a>
 
 
 		</div>

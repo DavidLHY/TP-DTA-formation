@@ -126,7 +126,7 @@
 
 		</div>
 
-		<a href="pizzas/list"><button type="button"
+		<a href=<c:url value='/pizzas/list'/> ><button type="button"
 				class="btn btn-primary">Retour</button></a>
 
 	</div>

@@ -22,8 +22,17 @@
 
 
 	<div class="container">
+		<div class="jumbotron">
+			<h1>Ajouter une pizza</h1>
+		</div>
+		<c:if test="${erreurSave!=null}">
+			<div class="alert alert-danger" role="alert">
+				<span class="glyphicon glyphicon-exclamation-sign"
+					aria-hidden="true"></span> <span class="sr-only">Error:</span>
+				${erreurSave}
+			</div>
 
-		<h1>Edition de la référence</h1>
+		</c:if>
 
 		<form method="post">
 			<label for="newcode">Code :</label> <input class="form-control"
@@ -31,8 +40,8 @@
 
 			<label for="ref">Nom :</label> <input class="form-control" id="ref"
 				name="ref" type="text" placeholder="Nom"> <label for="prix">Prix
-				: </label> <input class="form-control" id="prix" name="prix" type="text"
-				placeholder="prix">
+				: </label> <input step="0.01" class="form-control" id="prix" name="prix"
+				type="text" placeholder="prix">
 
 			<div class="form-group">
 				<label for="categorie">Categorie : </label> <select id="categorie"
@@ -51,12 +60,9 @@
 					</c:forEach>
 				</select>
 			</div>
-			<div class="form-group">
-
-				<label class="control-label">Images :</label> <input id="urlImage"
-					type="file" class="file">
-			</div>
-			<input type="submit" value="Valider">
+			<input class="btn btn-success" type="submit" value="Valider">
+			<a href=<c:url value='/pizzas/list'/>><button type="button"
+					class="btn btn-primary">Retour</button></a>
 		</form>
 
 

@@ -33,12 +33,16 @@ div#nomPizza {
 
 div[class="white"]
 {
-	background-color: white;
+	background-color: #E3E3E3;
 	font-family: Helvetica;
 	font-size: 150%;
 	border-width: 1px;
 	border-style:  solid ;
 	border-color: black;
+	margin:10px;
+	padding:100px;
+	border-radius: 20px;
+	
 	
 	
 }

@@ -1,6 +1,7 @@
 package fr.pizzeria.admin.web;
 
 import java.io.IOException;
+
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -11,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import fr.pizzeria.admin.metier.PizzaService;
 
@@ -54,10 +57,19 @@ public class SavePizzaController extends HttpServlet {
 		String categorie = request.getParameter("categorie");
 
 		Pizza pizza = new Pizza(newcode, ref, Double.valueOf(prix), CategoriePizza.valueOf(categorie));
-
+		
+		try{
 		pizzaService.save(pizza);
-
 		response.sendRedirect(request.getContextPath() + "/pizzas/list");
+		}catch(MySQLIntegrityConstraintViolationException e){
+			System.out.println("coucou");
+			RequestDispatcher dispatcher = this.getServletContext()
+					.getRequestDispatcher("/WEB-INF/views/pizzas/savePizza.jsp");
+			dispatcher.forward(request, response);
+			request.setAttribute("erreurSave", "Veuillez vérifier votre Saisie (code unique...)");
+			doGet(request, response);
+		}
+		
 
 	}
 
