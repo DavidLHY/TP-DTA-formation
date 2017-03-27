@@ -53,15 +53,15 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
-			<artifactId>maven-war-plugin</artifactId>
-			<configuration>  
-			<failOnMissingWebXml>false</failOnMissingWebXml>
-			</configuration>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
 			</plugin>
-			
-			
+
+
 		</plugins>
 
 	</build>
@@ -130,11 +130,11 @@
 			</dependency>
 
 			<dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>3.1.0</version>
-                <scope>provided</scope>
-            </dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
+				<scope>provided</scope>
+			</dependency>
 
 			<dependency>
 				<groupId>jstl</groupId>

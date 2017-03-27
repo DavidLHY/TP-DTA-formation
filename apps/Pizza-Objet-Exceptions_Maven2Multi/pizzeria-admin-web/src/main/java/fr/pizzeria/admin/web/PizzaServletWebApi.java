@@ -1,6 +1,7 @@
 package fr.pizzeria.admin.web;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 
 import fr.pizzeria.admin.metier.PizzaService;
 import fr.pizzeria.modele.CategoriePizza;
@@ -46,11 +47,11 @@ public class PizzaServletWebApi extends HttpServlet {
 
 		try {
 			pizzaService.save(new Pizza(code, nom, Double.valueOf(prix), CategoriePizza.valueOf(categoriePizza)));
-		} catch (MySQLIntegrityConstraintViolationException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
+			
 			e.printStackTrace();
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 

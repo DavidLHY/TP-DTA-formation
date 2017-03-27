@@ -2,6 +2,7 @@ package fr.pizzeria.admin.metier;
 
 
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 import java.util.List;
@@ -13,7 +14,6 @@ import javax.enterprise.event.Event;
 
 import javax.inject.Inject;
 
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import fr.pizzeria.admin.web.event.DeletePizzaEvent;
 import fr.pizzeria.admin.web.event.SavePizzaEvent;
@@ -47,7 +47,7 @@ public class PizzaService {
 
 	}
 
-	public void save(Pizza pizza) throws MySQLIntegrityConstraintViolationException {
+	public void save(Pizza pizza) throws SQLException {
 
 		pizzaEJB.save(pizza);
 		
