@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 import fr.pizzeria.admin.metier.PizzaService;
 import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
@@ -42,7 +44,15 @@ public class PizzaServletWebApi extends HttpServlet {
 		String prix = request.getParameter("prix");
 		String categoriePizza = request.getParameter("categorie");
 
-		pizzaService.save(new Pizza(code, nom, Double.valueOf(prix), CategoriePizza.valueOf(categoriePizza)));
+		try {
+			pizzaService.save(new Pizza(code, nom, Double.valueOf(prix), CategoriePizza.valueOf(categoriePizza)));
+		} catch (MySQLIntegrityConstraintViolationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	
