@@ -2,9 +2,6 @@ package fr.pizzeria.admin.web.event;
 
 import java.time.LocalDateTime;
 
-import javax.enterprise.event.Event;
-import javax.enterprise.event.Observes;
-
 import fr.pizzeria.modele.Pizza;
 
 public class SavePizzaEvent {

@@ -41,7 +41,7 @@
 			<label for="ref">Nom :</label> <input class="form-control" id="ref"
 				name="ref" type="text" placeholder="Nom"> <label for="prix">Prix
 				: </label> <input step="0.01" class="form-control" id="prix" name="prix"
-				type="text" placeholder="prix">
+				type="number" placeholder="prix">
 
 			<div class="form-group">
 				<label for="categorie">Categorie : </label> <select id="categorie"

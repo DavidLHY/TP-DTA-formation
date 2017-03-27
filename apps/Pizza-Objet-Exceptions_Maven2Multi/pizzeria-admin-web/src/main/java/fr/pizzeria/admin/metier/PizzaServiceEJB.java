@@ -1,5 +1,6 @@
 package fr.pizzeria.admin.metier;
 
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -7,7 +8,6 @@ import java.util.Set;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.ws.rs.Path;
 
 import fr.pizzeria.modele.Pizza;
 
@@ -60,9 +60,10 @@ public class PizzaServiceEJB {
 		
 	}
 
-	public void save(Pizza pizza) {
+	public void save(Pizza pizza) throws SQLException {
 		
-		em.persist(pizza);		
+		em.persist(pizza);
+		
 	}
 
 }

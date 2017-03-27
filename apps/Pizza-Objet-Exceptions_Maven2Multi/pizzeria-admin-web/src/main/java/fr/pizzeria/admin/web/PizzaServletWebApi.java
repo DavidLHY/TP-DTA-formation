@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
 import fr.pizzeria.admin.metier.PizzaService;
 import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
@@ -32,10 +30,7 @@ public class PizzaServletWebApi extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -48,9 +43,6 @@ public class PizzaServletWebApi extends HttpServlet {
 		try {
 			pizzaService.save(new Pizza(code, nom, Double.valueOf(prix), CategoriePizza.valueOf(categoriePizza)));
 		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		} catch (NumberFormatException e) {
 			
 			e.printStackTrace();
 		}

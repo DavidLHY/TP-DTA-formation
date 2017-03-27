@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.validation.ConstraintViolationException;
 
 import fr.pizzeria.admin.metier.PizzaService;
 
@@ -62,11 +62,11 @@ public class SavePizzaController extends HttpServlet {
 		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 		}catch(SQLException e){
 			System.out.println("coucou");
-			RequestDispatcher dispatcher = this.getServletContext()
+			/*RequestDispatcher dispatcher = this.getServletContext()
 					.getRequestDispatcher("/WEB-INF/views/pizzas/savePizza.jsp");
 			dispatcher.forward(request, response);
 			request.setAttribute("erreurSave", "Veuillez vérifier votre Saisie (code unique...)");
-			doGet(request, response);
+			doGet(request, response);*/
 		}
 		
 

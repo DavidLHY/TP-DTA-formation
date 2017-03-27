@@ -4,22 +4,16 @@ package fr.pizzeria.admin.metier;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-
 import java.util.List;
-
 import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.enterprise.event.Event;
-
 import javax.inject.Inject;
-
 
 import fr.pizzeria.admin.web.event.DeletePizzaEvent;
 import fr.pizzeria.admin.web.event.SavePizzaEvent;
 import fr.pizzeria.admin.web.event.UpdatePizzaEvent;
-
-
 import fr.pizzeria.modele.Pizza;
 
 
