@@ -81,6 +81,16 @@
 			<artifactId>reflections</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		
+		 <dependency>
+       <groupId>org.hibernate</groupId>
+       <artifactId>hibernate-entitymanager</artifactId>
+    </dependency>
+
 	</dependencies>
 
 
@@ -99,7 +109,7 @@
 				<dao.source>fr.pizzeria.dao.IPizzaDaoFichier</dao.source>
 			</properties>
 		</profile>
-		
+
 		<profile>
 
 			<id>dev2</id>
@@ -125,7 +135,7 @@
 				<dao.source>fr.pizzeria.dao.IPizzaDaoFichier</dao.source>
 			</properties>
 		</profile>
-		
+
 		<profile>
 
 			<id>jpaProf</id>

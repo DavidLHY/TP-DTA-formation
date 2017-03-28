@@ -1,10 +1,15 @@
 package fr.pizzeria.console;
 
 
+import java.util.List;
 import java.util.logging.Level;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import fr.pizzeria.dao.Dao;
 import fr.pizzeria.ihm.Menu;
 import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.modele.Pizza;
 
 public class PizzeriaAdminConsoleApp {
 	
@@ -12,12 +17,26 @@ public class PizzeriaAdminConsoleApp {
 
 	
 	public static void main(String[] args) {
+		
+		
+	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("dao-memoire-config.xml","application-config.xml");
+		
+	java.util.logging.Logger.getLogger("org").setLevel(Level.SEVERE);
+	
+		Dao<Pizza,String>  daoSpring = context.getBean(Dao.class);
+		IhmTools ihmTools = context.getBean(IhmTools.class);
+		Menu menu = context.getBean(Menu.class);
+		List<Pizza> allPizza= daoSpring.findAll();
+		
+		for(Pizza pizza:allPizza)
+		{
+			System.out.println(pizza);
+		}
 
-		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		
-		IhmTools ihmTools = new IhmTools();
 		
-		Menu menu = new Menu();
+		//menu.printMenu();
+
 		menu.actionmenu(ihmTools);
 	}
 }

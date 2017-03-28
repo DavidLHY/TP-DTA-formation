@@ -7,19 +7,20 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import fr.pizzeria.dao.factory.Factory;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.modele.Client;
 
 public class DaoClientJPA implements DaoClient {
 
-	private EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("david-pizzeria-model");
 	
+	private Factory emFactory;
 	@Override
 	public boolean save(Client client) {
 		
 		
 		
-		EntityManager em = emFactory.createEntityManager();
+		EntityManager em = emFactory.getEmFactory().createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
 		try {
@@ -60,7 +61,7 @@ public class DaoClientJPA implements DaoClient {
 	public Client findclientmail(String email)  {
 		
 		
-		EntityManager em = emFactory.createEntityManager();
+		EntityManager em = emFactory.getEmFactory().createEntityManager();
 		try{
 			  TypedQuery<Client> qClient = em.createNamedQuery("Client.findByMail",Client.class).setParameter("email", email);
 			  
@@ -77,5 +78,15 @@ public class DaoClientJPA implements DaoClient {
 		
 		
 	}
+
+	public Factory getEmFactory() {
+		return emFactory;
+	}
+
+	public void setEmFactory(Factory emFactory) {
+		this.emFactory = emFactory;
+	}
+	
+	
 
 }

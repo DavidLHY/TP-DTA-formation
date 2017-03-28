@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="factory" class="fr.pizzeria.dao.factory.Factory"></bean>
+	
+	
+	<bean id="daoPizza" class="fr.pizzeria.dao.IPizzaDaoJPA">
+	<property name="emFactory"> <ref bean="factory"></ref></property>
+	</bean>
+	
+	
+	<!-- <bean id="daoPizzaSource" class="fr.pizzeria.dao.IPizzaDaoFichier">
+	</bean>
+
+	<bean id="daoLivreur" class="fr.pizzeria.dao.DaoLivreurJPA">
+	<property name="emFactory"> <ref bean="factory"></ref></property>
+	</bean>
+	<bean id="daoClient" class="fr.pizzeria.dao.DaoClientJPA">
+	<property name="emFactory"> <ref bean="factory"></ref></property>
+	</bean>
+	<bean id="daoCommande" class="fr.pizzeria.dao.DaoCommandeJPA">
+	<property name="emFactory"> <ref bean="factory"></ref></property>
+	</bean>-->
+
+
+</beans>

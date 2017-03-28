@@ -10,18 +10,21 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import fr.pizzeria.dao.factory.Factory;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.modele.Commande;
 
 
 public class DaoCommandeJPA implements Dao<Commande, String> {
 
-	private EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("david-pizzeria-model");
+	//private EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("david-pizzeria-model");
 
+	private Factory emFactory;
+		
 	@Override
 	public boolean save(Commande comm) {
 
-		EntityManager em = emFactory.createEntityManager();
+		EntityManager em = emFactory.getEmFactory().createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
 		try {
@@ -44,7 +47,7 @@ public class DaoCommandeJPA implements Dao<Commande, String> {
 	public boolean update(String id, Commande commande) {
 
 		
-		EntityManager em = emFactory.createEntityManager();
+		EntityManager em = emFactory.getEmFactory().createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
 		try {
@@ -78,7 +81,7 @@ public class DaoCommandeJPA implements Dao<Commande, String> {
 	@Override
 	public Set<Commande> findby(String ref, Object val) {
 		List<Commande> listOfCommandes = new ArrayList<>();
-		EntityManager em = emFactory.createEntityManager();
+		EntityManager em = emFactory.getEmFactory().createEntityManager();
 		if (val != null) {
 			listOfCommandes = em.createQuery("select com from Commande com where com." + ref + "=:val", Commande.class)
 					.setParameter("val", val).getResultList();
@@ -94,4 +97,13 @@ public class DaoCommandeJPA implements Dao<Commande, String> {
 		return setOfCommande;
 	}
 
+	public Factory getEmFactory() {
+		return emFactory;
+	}
+
+	public void setEmFactory(Factory emFactory) {
+		this.emFactory = emFactory;
+	}
+
+	
 }

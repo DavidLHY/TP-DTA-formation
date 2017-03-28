@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+
+	<bean id="Menu" class="fr.pizzeria.ihm.Menu"></bean>
+	
+	
+	
+	<bean id="IhmTools" class="fr.pizzeria.ihm.tools.IhmTools">
+		<property name="daoImpl">
+			<ref bean="daoPizza" />
+		</property>
+		<!--<property name="daoSource">
+			<ref bean="daoPizzaSource" />
+		</property>
+		  <property name="daoLivreur">
+			<ref bean="daoLivreur" />
+		</property>
+		<property name="daoCommande">
+			<ref bean="daoCommande" />
+		</property> -->
+	</bean>
+
+</beans>

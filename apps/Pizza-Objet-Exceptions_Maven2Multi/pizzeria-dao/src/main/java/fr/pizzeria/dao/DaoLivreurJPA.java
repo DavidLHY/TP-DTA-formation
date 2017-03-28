@@ -10,18 +10,18 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import fr.pizzeria.dao.factory.Factory;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.modele.Livreur;
 
 public class DaoLivreurJPA implements Dao<Livreur, String> {
 
-	private EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("david-pizzeria-model");
-
+	private Factory emFactory;	
 	@Override
 	public boolean save(Livreur livreur) {
 		// TODO Auto-generated method stub
 
-		EntityManager em = emFactory.createEntityManager();
+		EntityManager em = emFactory.getEmFactory().createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
 		try {
@@ -54,7 +54,7 @@ public class DaoLivreurJPA implements Dao<Livreur, String> {
 	@Override
 	public Set<Livreur> findby(String ref, Object val) {
 		List<Livreur> listOfLivreur = new ArrayList<>();
-		EntityManager em = emFactory.createEntityManager();
+		EntityManager em = emFactory.getEmFactory().createEntityManager();
 		if (!val.equals("all")) {
 
 			listOfLivreur = em.createQuery("select liv from Livreur liv where liv." + ref + "=:val", Livreur.class)
@@ -70,4 +70,14 @@ public class DaoLivreurJPA implements Dao<Livreur, String> {
 
 	}
 
+	public Factory getEmFactory() {
+		return emFactory;
+	}
+
+	public void setEmFactory(Factory emFactory) {
+		this.emFactory = emFactory;
+	}
+
+	
+	
 }
