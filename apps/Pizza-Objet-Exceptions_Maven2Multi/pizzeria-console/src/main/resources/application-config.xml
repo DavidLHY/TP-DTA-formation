@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 
-	<bean id="Menu" class="fr.pizzeria.ihm.Menu"></bean>
-	
-	
-	
-	<bean id="IhmTools" class="fr.pizzeria.ihm.tools.IhmTools">
-		<property name="daoImpl">
-			<ref bean="daoPizza" />
-		</property>
-		<!--<property name="daoSource">
-			<ref bean="daoPizzaSource" />
-		</property>
-		  <property name="daoLivreur">
-			<ref bean="daoLivreur" />
-		</property>
-		<property name="daoCommande">
-			<ref bean="daoCommande" />
-		</property> -->
+	<bean id="scanner" class="java.util.Scanner">
+		<constructor-arg>
+			<util:constant id="scanner" static-field="java.lang.System.in" />
+		</constructor-arg>
 	</bean>
+
+
+	<bean id="Menu" class="fr.pizzeria.ihm.Menu">
+		<constructor-arg name="titre"
+			value="***** Pizzeria Administration *****"></constructor-arg>
+		<constructor-arg ref="scanner"></constructor-arg>
+		<constructor-arg name="listOptions">
+
+			<util:map>
+				<entry key="1" value-ref="listening"> </entry>
+				<entry key="2" value-ref="modify"> </entry>
+			</util:map>
+
+		</constructor-arg>
+
+	</bean>
+
+
+	<bean id="listening" class="fr.pizzeria.ihm.menu.option.PrintedOptionMenu">
+		<constructor-arg ref="daoPizza"></constructor-arg>
+	</bean>
+
+
+	<bean id="modify" class="fr.pizzeria.ihm.menu.option.UpdateOptionMenu">
+		<constructor-arg ref="scanner"></constructor-arg>
+		<constructor-arg ref="daoPizza"></constructor-arg>
+	</bean>
+
+
 
 </beans>

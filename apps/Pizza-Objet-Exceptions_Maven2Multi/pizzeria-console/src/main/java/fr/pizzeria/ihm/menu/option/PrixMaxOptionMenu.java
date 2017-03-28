@@ -2,11 +2,20 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Comparator;
 
-import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.dao.Dao;
 import fr.pizzeria.modele.Pizza;
 
 @TagOptionMenu
 public class PrixMaxOptionMenu extends OptionMenu {
+
+	
+	private Dao<Pizza,String> dao;
+	
+		
+	public PrixMaxOptionMenu(Dao<Pizza, String> dao) {
+		super();
+		this.dao = dao;
+	}
 
 	@Override
 	public void libelle() {
@@ -15,10 +24,10 @@ public class PrixMaxOptionMenu extends OptionMenu {
 	}
 
 	@Override
-	public boolean execute(IhmTools ihmTools) {
+	public boolean execute() {
 
 		System.out.println("La pizza la plus cher est:");
-		ihmTools.getDaoImpl().findAll().stream().max(Comparator.comparing(Pizza::getPrix)).get().printPizza();
+		dao.findAll().stream().max(Comparator.comparing(Pizza::getPrix)).get().printPizza();
 
 		return false;
 	}

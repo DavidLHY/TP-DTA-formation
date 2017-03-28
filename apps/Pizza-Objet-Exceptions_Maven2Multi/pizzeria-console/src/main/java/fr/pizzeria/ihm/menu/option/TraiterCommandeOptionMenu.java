@@ -1,15 +1,21 @@
 package fr.pizzeria.ihm.menu.option;
 
+import java.util.Scanner;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import fr.pizzeria.dao.Dao;
 import fr.pizzeria.exception.DaoException;
-import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.modele.Commande;
 import fr.pizzeria.modele.Livreur;
 
 public class TraiterCommandeOptionMenu extends OptionMenu {
+
+	private Scanner scanner;
+	private Dao<Commande,String> daoCommande;
+	private Dao<Livreur,String> daoLivreur;
+	
 
 	@Override
 	public void libelle() {
@@ -18,23 +24,23 @@ public class TraiterCommandeOptionMenu extends OptionMenu {
 	}
 
 	@Override
-	public boolean execute(IhmTools ihmTools) {
+	public boolean execute() {
 
-		Set<Commande> ListCommande = ihmTools.getDaoCommande().findby("livreur", null);
+		Set<Commande> ListCommande = daoCommande.findby("livreur", null);
 
 		for (Commande current : ListCommande) {
 			System.out.println(current);
 		}
 		System.out.println("Veuillez entrer l'id de la commande non traitee:");
-		int id_Commande = ihmTools.getScanner().nextInt();
+		int id_Commande = scanner.nextInt();
 
-		Set<Livreur> ListLivreur = ihmTools.getDaoLivreur().findby("id", "all");
+		Set<Livreur> ListLivreur = daoLivreur.findby("id", "all");
 
 		for (Livreur current : ListLivreur) {
 			System.out.println(current);
 		}
 		System.out.println("Veuillez entrer l'id du livreur pour expedier la commande:");
-		int id_Livreur = ihmTools.getScanner().nextInt();
+		int id_Livreur = scanner.nextInt();
 
 		Commande commandeExp = null;
 		Livreur livreurExp = null;
@@ -56,7 +62,7 @@ public class TraiterCommandeOptionMenu extends OptionMenu {
 		try {
 			if (commandeExp != null && livreurExp != null) {
 				commandeExp.setLivreur(livreurExp);
-				ihmTools.getDaoCommande().update(Integer.toString(id_Commande), commandeExp);
+				daoCommande.update(Integer.toString(id_Commande), commandeExp);
 			}else
 			{
 				throw new DaoException("id commande et/ou Livreur null");

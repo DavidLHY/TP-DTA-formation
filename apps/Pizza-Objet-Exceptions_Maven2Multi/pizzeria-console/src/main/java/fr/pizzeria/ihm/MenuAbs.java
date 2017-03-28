@@ -3,32 +3,42 @@ package fr.pizzeria.ihm;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import fr.pizzeria.ihm.menu.option.OptionMenu;
-import fr.pizzeria.ihm.tools.IhmTools;
 
 public abstract class MenuAbs {
 
 	protected String titre = "***** Pizzeria Administration *****";
+	protected Scanner scanner;
+	
 
 	protected Map<Integer, OptionMenu> listOptions = new TreeMap<Integer, OptionMenu>();
+	
+	
+public MenuAbs(String titre, Scanner scanner, Map<Integer, OptionMenu> listOptions) {
+		
+		this.titre = titre;
+		this.scanner = scanner;
+		this.listOptions = listOptions;
+	}
 
-	public void actionmenu(IhmTools ihmTools) {
+	public void actionmenu() {
 
 		int choix = 0;
 		do {
 			this.printMenu();
 			try {
-				choix = ihmTools.getScanner().nextInt();
-				this.listOptions.get(choix).execute(ihmTools);
+				choix = scanner.nextInt();
+				this.listOptions.get(choix).execute();
 			} catch (NullPointerException e) {
 		       Logger.getAnonymousLogger().log(Level.INFO, "Choix indisponible",e); 
 			} catch (InputMismatchException e) {
 				Logger.getAnonymousLogger().log(Level.INFO, "Saisie Incorrecte",e); 
-				ihmTools.getScanner().next();
+				scanner.next();
 			}
 
 		} while (choix != 99);

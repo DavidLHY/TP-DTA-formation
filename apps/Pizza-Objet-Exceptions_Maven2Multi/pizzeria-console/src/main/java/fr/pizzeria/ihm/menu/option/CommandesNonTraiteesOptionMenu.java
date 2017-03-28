@@ -2,10 +2,20 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Set;
 
-import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.dao.Dao;
 import fr.pizzeria.modele.Commande;
 
 public class CommandesNonTraiteesOptionMenu extends OptionMenu {
+
+	
+	private Dao<Commande,String> daoCommande;
+	
+	
+
+	public CommandesNonTraiteesOptionMenu(Dao<Commande, String> daoCommande) {
+		super();
+		this.daoCommande = daoCommande;
+	}
 
 	@Override
 	public void libelle() {
@@ -14,9 +24,9 @@ public class CommandesNonTraiteesOptionMenu extends OptionMenu {
 	}
 
 	@Override
-	public boolean execute(IhmTools ihmTools) {
+	public boolean execute() {
 
-		Set<Commande> setCommande = ihmTools.getDaoCommande().findby("livreur_id", null);
+		Set<Commande> setCommande = daoCommande.findby("livreur_id", null);
 		
 		
 		for(Commande current:setCommande)

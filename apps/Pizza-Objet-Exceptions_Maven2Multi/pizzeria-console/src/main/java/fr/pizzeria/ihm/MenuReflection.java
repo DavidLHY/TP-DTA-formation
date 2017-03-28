@@ -1,6 +1,8 @@
 package fr.pizzeria.ihm;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -12,7 +14,15 @@ import fr.pizzeria.ihm.menu.option.TagOptionMenu;
 
 public class MenuReflection extends MenuAbs {
 
-	public MenuReflection() {
+	public MenuReflection(String titre, Scanner scanner, Map<Integer, OptionMenu> listOptions) {
+		super(titre, scanner, listOptions);
+		
+	}
+
+	
+	
+	
+	/*public MenuReflection() {
 
 		Reflections reflections = new Reflections("fr.pizzeria.ihm");
 
@@ -33,6 +43,6 @@ public class MenuReflection extends MenuAbs {
 			listOptions.put(i, listOption.get(i));
 		}
 
-	}
+	}*/
 
 }

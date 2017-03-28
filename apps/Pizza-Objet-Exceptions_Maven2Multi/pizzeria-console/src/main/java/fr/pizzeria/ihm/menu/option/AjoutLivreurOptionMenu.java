@@ -1,9 +1,22 @@
 package fr.pizzeria.ihm.menu.option;
 
-import fr.pizzeria.ihm.tools.IhmTools;
+import java.util.Scanner;
+
+import fr.pizzeria.dao.Dao;
 import fr.pizzeria.modele.Livreur;
 
 public class AjoutLivreurOptionMenu extends OptionMenu {
+
+	private Scanner scanner;
+	private Dao<Livreur,String> daoLivreur;
+	
+	
+
+	public AjoutLivreurOptionMenu(Scanner scanner, Dao<Livreur, String> daoLivreur) {
+		super();
+		this.scanner = scanner;
+		this.daoLivreur = daoLivreur;
+	}
 
 	@Override
 	public void libelle() {
@@ -13,17 +26,17 @@ public class AjoutLivreurOptionMenu extends OptionMenu {
 	}
 
 	@Override
-	public boolean execute(IhmTools ihmTools) {
+	public boolean execute() {
 		
 		Livreur newLivreur=new Livreur();
 		
 		System.out.println("Nom du livreur");
-		newLivreur.setNom(ihmTools.getScanner().next());
+		newLivreur.setNom(scanner.next());
 		
 		System.out.println("Prenom du livreur");
-		newLivreur.setPrenom(ihmTools.getScanner().next());
+		newLivreur.setPrenom(scanner.next());
 		
-		ihmTools.getDaoLivreur().save(newLivreur);
+		daoLivreur.save(newLivreur);
 		
 		return false;
 	}

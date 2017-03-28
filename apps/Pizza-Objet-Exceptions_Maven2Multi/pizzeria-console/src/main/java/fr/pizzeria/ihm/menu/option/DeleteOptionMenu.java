@@ -1,14 +1,30 @@
 package fr.pizzeria.ihm.menu.option;
 
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import fr.pizzeria.dao.Dao;
 import fr.pizzeria.exception.DaoException;
-import fr.pizzeria.ihm.tools.IhmTools;
+
+import fr.pizzeria.modele.Pizza;
 
 
 @TagOptionMenu
 public class DeleteOptionMenu extends OptionMenu {
+	
+	
+	private Scanner scanner;
+	private Dao<Pizza,String> dao;
+	
+	
+
+
+	public DeleteOptionMenu(Scanner scanner, Dao<Pizza, String> dao) {
+		
+		this.scanner = scanner;
+		this.dao = dao;
+	}
 
 	@Override
 	public void libelle() {
@@ -18,14 +34,14 @@ public class DeleteOptionMenu extends OptionMenu {
 	}
 
 	@Override
-	public boolean execute(IhmTools ihmTools) {
+	public boolean execute() {
 
 		String choix;
 		System.out.println("Veuillez donner le code de la pizza à supprimer");
-		choix = ihmTools.getScanner().next();
+		choix = scanner.next();
 
 		try {
-			ihmTools.getDaoImpl().delete(choix);
+			dao.delete(choix);
 		} catch (DaoException e) {
 			Logger.getAnonymousLogger().log(Level.INFO, " Pas supprimable, car pas de bonne reference",e); 
 		}

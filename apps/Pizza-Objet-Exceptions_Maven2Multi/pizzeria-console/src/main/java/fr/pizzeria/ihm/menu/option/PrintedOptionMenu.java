@@ -1,9 +1,22 @@
 package fr.pizzeria.ihm.menu.option;
 
-import fr.pizzeria.ihm.tools.IhmTools;
+import java.util.Scanner;
+
+import fr.pizzeria.dao.Dao;
+import fr.pizzeria.modele.Pizza;
 
 @TagOptionMenu
 public class PrintedOptionMenu extends OptionMenu {
+
+	
+	private Dao<Pizza,String> dao;
+	
+	
+
+	public PrintedOptionMenu(Dao<Pizza, String> dao) {
+		super();
+		this.dao = dao;
+	}
 
 	@Override
 	public void libelle() {
@@ -13,12 +26,12 @@ public class PrintedOptionMenu extends OptionMenu {
 	}
 
 	@Override
-	public boolean execute(IhmTools ihmTools) {
+	public boolean execute() {
 
-		for (int i = 0; i < ihmTools.getDaoImpl().findAll().size(); i++) {
-			ihmTools.getDaoImpl().findAll().get(i).printPizza();
+		for (int i = 0; i < dao.findAll().size(); i++) {
+			dao.findAll().get(i).printPizza();
 		}
-		System.out.println("\n" + ihmTools.getDaoImpl().findAll().size() + " Pizzas restantes \n");
+		System.out.println("\n" + dao.findAll().size() + " Pizzas restantes \n");
 		return true;
 	}
 }

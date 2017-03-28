@@ -1,9 +1,18 @@
 package fr.pizzeria.ihm.menu.option;
 
-import fr.pizzeria.ihm.tools.IhmTools;
+import java.util.Scanner;
 
 @TagOptionMenu
 public class ExitOptionMenu extends OptionMenu {
+
+	private Scanner scanner;
+	
+	
+	
+	public ExitOptionMenu(Scanner scanner) {
+	
+		this.scanner = scanner;
+	}
 
 	@Override
 	public void libelle() {
@@ -12,10 +21,10 @@ public class ExitOptionMenu extends OptionMenu {
 	}
 
 	@Override
-	public boolean execute(IhmTools ihmTools) {
+	public boolean execute() {
 
 		System.out.println("Bonne journée bro!");
-		ihmTools.getScanner().close();
+		scanner.close();
 		System.exit(0);
 		return true;
 	}

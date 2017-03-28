@@ -3,10 +3,23 @@ package fr.pizzeria.ihm.menu.option;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import fr.pizzeria.dao.Dao;
 import fr.pizzeria.exception.DaoException;
-import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.modele.Pizza;
 
 public class ImporterDonnesOptionMenu extends OptionMenu {
+
+
+	private Dao<Pizza,String> dao;
+	private Dao<Pizza,String> daoSource;
+	
+	
+
+	public ImporterDonnesOptionMenu(Dao<Pizza, String> dao, Dao<Pizza, String> daoSource) {
+		super();
+		this.dao = dao;
+		this.daoSource = daoSource;
+	}
 
 	@Override
 	public void libelle() {
@@ -15,10 +28,10 @@ public class ImporterDonnesOptionMenu extends OptionMenu {
 	}
 
 	@Override
-	public boolean execute(IhmTools ihmTools) {
+	public boolean execute() {
 
 		try {
-			ihmTools.getDaoImpl().importData(ihmTools.getDaoSource());
+			dao.importData(daoSource);
 		} catch (DaoException e) {
 			Logger.getAnonymousLogger().log(Level.INFO, "Import Failed",e);
 		}
