@@ -1,10 +1,6 @@
 package fr.pizzeria.ihm.menu.option;
 
-public abstract class OptionMenu {
-
-		
-	
-	
+public interface OptionMenu {
 
 	public abstract void libelle();
 

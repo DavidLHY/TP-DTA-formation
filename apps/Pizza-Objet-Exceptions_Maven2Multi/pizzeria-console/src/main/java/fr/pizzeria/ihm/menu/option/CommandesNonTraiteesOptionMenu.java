@@ -2,16 +2,20 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.modele.Commande;
 
-public class CommandesNonTraiteesOptionMenu extends OptionMenu {
+@Component
+public class CommandesNonTraiteesOptionMenu implements OptionMenu {
 
 	
 	private Dao<Commande,String> daoCommande;
 	
 	
-
+	@Autowired
 	public CommandesNonTraiteesOptionMenu(Dao<Commande, String> daoCommande) {
 		super();
 		this.daoCommande = daoCommande;

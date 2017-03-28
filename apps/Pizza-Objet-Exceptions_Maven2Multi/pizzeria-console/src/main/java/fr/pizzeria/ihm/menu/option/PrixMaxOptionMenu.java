@@ -2,17 +2,22 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Comparator;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.modele.Pizza;
 
 @TagOptionMenu
-public class PrixMaxOptionMenu extends OptionMenu {
+@Component
+public class PrixMaxOptionMenu implements OptionMenu {
 
 	
 	private Dao<Pizza,String> dao;
 	
-		
-	public PrixMaxOptionMenu(Dao<Pizza, String> dao) {
+	@Autowired
+	public PrixMaxOptionMenu(@Qualifier("pizzaP") Dao<Pizza, String> dao) {
 		super();
 		this.dao = dao;
 	}

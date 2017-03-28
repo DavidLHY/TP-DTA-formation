@@ -2,13 +2,18 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
 
-@TagOptionMenu
-public class ExitOptionMenu extends OptionMenu {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@TagOptionMenu
+@Component
+public class ExitOptionMenu implements OptionMenu {
+
+	
 	private Scanner scanner;
 	
 	
-	
+	@Autowired
 	public ExitOptionMenu(Scanner scanner) {
 	
 		this.scanner = scanner;

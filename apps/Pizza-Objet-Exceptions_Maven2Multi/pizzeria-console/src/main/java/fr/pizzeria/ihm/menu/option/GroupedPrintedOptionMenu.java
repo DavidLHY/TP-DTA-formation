@@ -1,19 +1,23 @@
 package fr.pizzeria.ihm.menu.option;
 
-import java.util.Scanner;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.modele.Pizza;
 
-public class GroupedPrintedOptionMenu extends OptionMenu {
+@Component
+public class GroupedPrintedOptionMenu implements OptionMenu {
 
 	
 	private Dao<Pizza,String> dao;
 	
 	
-
-	public GroupedPrintedOptionMenu(Dao<Pizza, String> dao) {
+	@Autowired
+	public GroupedPrintedOptionMenu(@Qualifier("pizzaP") Dao<Pizza, String> dao) {
 		this.dao = dao;
 	}
 

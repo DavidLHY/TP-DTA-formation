@@ -5,17 +5,29 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.modele.Commande;
 import fr.pizzeria.modele.Livreur;
 
-public class TraiterCommandeOptionMenu extends OptionMenu {
+@Component
+public class TraiterCommandeOptionMenu implements OptionMenu {
 
 	private Scanner scanner;
 	private Dao<Commande,String> daoCommande;
 	private Dao<Livreur,String> daoLivreur;
 	
+	
+	@Autowired
+	public TraiterCommandeOptionMenu(Scanner scanner, Dao<Commande, String> daoCommande,
+			Dao<Livreur, String> daoLivreur) {
+		this.scanner = scanner;
+		this.daoCommande = daoCommande;
+		this.daoLivreur = daoLivreur;
+	}
 
 	@Override
 	public void libelle() {

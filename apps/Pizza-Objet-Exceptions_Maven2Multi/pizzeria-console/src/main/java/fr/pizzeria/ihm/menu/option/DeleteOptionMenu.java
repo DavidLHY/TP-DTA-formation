@@ -4,6 +4,10 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.exception.DaoException;
 
@@ -11,16 +15,17 @@ import fr.pizzeria.modele.Pizza;
 
 
 @TagOptionMenu
-public class DeleteOptionMenu extends OptionMenu {
+@Component
+public class DeleteOptionMenu implements OptionMenu {
 	
 	
-	private Scanner scanner;
+	private Scanner scanner;	
 	private Dao<Pizza,String> dao;
 	
 	
 
-
-	public DeleteOptionMenu(Scanner scanner, Dao<Pizza, String> dao) {
+	@Autowired
+	public DeleteOptionMenu(Scanner scanner, @Qualifier("pizzaP") Dao<Pizza, String> dao) {
 		
 		this.scanner = scanner;
 		this.dao = dao;

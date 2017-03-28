@@ -1,19 +1,22 @@
 package fr.pizzeria.ihm.menu.option;
 
-import java.util.Scanner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.modele.Pizza;
 
 @TagOptionMenu
-public class PrintedOptionMenu extends OptionMenu {
+@Component
+public class PrintedOptionMenu implements OptionMenu {
 
 	
 	private Dao<Pizza,String> dao;
 	
 	
-
-	public PrintedOptionMenu(Dao<Pizza, String> dao) {
+	@Autowired
+	public PrintedOptionMenu(@Qualifier("pizzaP") Dao<Pizza, String> dao) {
 		super();
 		this.dao = dao;
 	}
