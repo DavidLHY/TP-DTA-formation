@@ -6,12 +6,18 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @ComponentScan("fr.pizzeria.dao")
+@EnableTransactionManagement
 public class DaoSpringConfig {
 
 	@Bean
@@ -34,5 +40,23 @@ public class DaoSpringConfig {
 		.addScript("test-schema.sql")
 		.build();
 	}
+	
+	
+	@Bean
+	public PlatformTransactionManager txManager(){
+		
+		return new JpaTransactionManager();
+		 
+	}
+	
+	@Bean
+	public LocalEntityManagerFactoryBean emf(){
+		
+		LocalEntityManagerFactoryBean localemf=new LocalEntityManagerFactoryBean();		
+		localemf.setPersistenceUnitName("david-pizzeria-modelH2");
+		
+		return localemf;
+	}
+	
 
 }

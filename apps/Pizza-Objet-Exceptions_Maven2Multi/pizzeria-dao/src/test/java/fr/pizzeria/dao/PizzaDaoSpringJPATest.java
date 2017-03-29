@@ -17,21 +17,26 @@ import fr.pizzeria.modele.Pizza;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = DaoSpringConfig.class )
-public class PizzaDaoSpringJDBCTest {
+public class PizzaDaoSpringJPATest {
 
 	@Autowired
-	@Qualifier("springJDBC")
-	Dao<Pizza,String> daoJDBC;
+	@Qualifier("springJPA")
+	Dao<Pizza,String> daoJPA;
 	
 	@Test
 	public void findAll_Test()
 	{
-		List<Pizza> listPizza = daoJDBC.findAll();
+		daoJPA.save(new Pizza("code", "nom", 10,CategoriePizza.POISSON));
+		daoJPA.save(new Pizza("code2", "nom2", 102,CategoriePizza.VIANDE));
+		
+		List<Pizza> listPizza = daoJPA.findAll();
+		
+		System.out.println(listPizza);
 		assertTrue(listPizza != null);
 	}
 	
 	
-	@Test
+	/*@Test
 	public void Save_Test()
 	{
 		int Size1 = daoJDBC.findAll().size();
@@ -56,7 +61,7 @@ public class PizzaDaoSpringJDBCTest {
 		int Size1 = daoJDBC.findAll().size();
 		daoJDBC.delete("code");		
 		assertTrue(Size1-1 == daoJDBC.findAll().size());
-	}
+	}*/
 	
 	
 }

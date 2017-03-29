@@ -12,14 +12,14 @@ import org.springframework.stereotype.Repository;
 import fr.pizzeria.dao.factory.PizzaMapper;
 import fr.pizzeria.modele.Pizza;
 
-@Repository
+@Repository("springJDBC")
 public class PizzaDaoSpringJDBC implements Dao<Pizza, String> {
 
 	private JdbcTemplate jdbcTemplate;
 
 	@Autowired
 	
-	public PizzaDaoSpringJDBC(@Qualifier("BaseTest")DataSource dataSource) {
+	public PizzaDaoSpringJDBC(@Qualifier("BaseTest") DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
