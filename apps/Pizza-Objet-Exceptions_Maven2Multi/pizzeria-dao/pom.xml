@@ -1,55 +1,79 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>david-pizzeria-dao</artifactId>
- 	<packaging>jar</packaging>
-  
-   <parent>
-    <groupId>david-Pizzeria</groupId>
-    <artifactId>david-Pizzeria-Parents</artifactId>
-    <relativePath>../pom.xml</relativePath>
-    <version>1</version>
-    </parent>
-  
-   
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>david-pizzeria-dao</artifactId>
+	<packaging>jar</packaging>
 
-  <dependencies>
+	<parent>
+		<groupId>david-Pizzeria</groupId>
+		<artifactId>david-Pizzeria-Parents</artifactId>
+		<relativePath>../pom.xml</relativePath>
+		<version>1</version>
+	</parent>
 
-    <dependency>
-         <groupId>org.hamcrest</groupId>
-         <artifactId>hamcrest-library</artifactId>
-     </dependency>
-     <dependency>
-         <groupId>org.apache.commons</groupId>
-         <artifactId>commons-lang3</artifactId>
-     </dependency>
 
-     <dependency>
-        <groupId>david-Pizzeria</groupId>
-        <artifactId>david-pizzeria-model</artifactId>
-        <version>1</version>
-     </dependency>
-     
-     <dependency>
-       <groupId>org.mariadb.jdbc</groupId>
-       <artifactId>mariadb-java-client</artifactId>
-     </dependency>
-     
-      <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-     </dependency>
-     
-     <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-collections4</artifactId>      
-     </dependency>
-     
-     <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
-    <dependency>
-       <groupId>org.hibernate</groupId>
-       <artifactId>hibernate-entitymanager</artifactId>
-    </dependency>
-     
-    
-  </dependencies>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>david-Pizzeria</groupId>
+			<artifactId>david-pizzeria-model</artifactId>
+			<version>1</version>
+		</dependency>
+
+		<!--  <dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+		</dependency>-->
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+
+
+	</dependencies>
 </project>

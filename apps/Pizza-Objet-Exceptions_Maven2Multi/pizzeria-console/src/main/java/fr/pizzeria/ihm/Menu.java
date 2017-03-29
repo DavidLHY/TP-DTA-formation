@@ -15,8 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import fr.pizzeria.ihm.menu.option.ExitOptionMenu;
 import fr.pizzeria.ihm.menu.option.OptionMenu;
 import fr.pizzeria.ihm.menu.option.PrintedOptionMenu;
+import fr.pizzeria.ihm.menu.option.SaveOptionMenu;
 
 @Component
 public class Menu implements MenuAbs {
@@ -44,6 +46,8 @@ public class Menu implements MenuAbs {
 	public void init(){
 		this.listOptions = new TreeMap<Integer, OptionMenu>();
 		this.listOptions.put(1,context.getBean(PrintedOptionMenu.class));
+		this.listOptions.put(2,context.getBean(SaveOptionMenu.class));
+		this.listOptions.put(99,context.getBean(ExitOptionMenu.class));
 		
 	}
 
