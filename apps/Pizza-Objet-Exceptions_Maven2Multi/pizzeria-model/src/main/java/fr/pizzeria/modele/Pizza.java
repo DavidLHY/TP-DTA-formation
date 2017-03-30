@@ -47,7 +47,7 @@ public class Pizza {
 		this.nom = nom;
 		this.prix = prix;
 		this.categoriePizza = categoriePizza;
-		;
+		
 	}
 
 	public Pizza() {
