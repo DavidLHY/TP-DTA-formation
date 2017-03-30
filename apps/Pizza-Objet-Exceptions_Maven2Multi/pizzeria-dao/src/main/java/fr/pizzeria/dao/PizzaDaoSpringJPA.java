@@ -12,7 +12,8 @@ import fr.pizzeria.modele.Pizza;
 @Repository("springJPA")
 public class PizzaDaoSpringJPA implements Dao<Pizza, String> {
 
-	@PersistenceContext private EntityManager em;
+	@PersistenceContext
+	private EntityManager em;
 	
 
 

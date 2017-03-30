@@ -74,11 +74,11 @@ public class Pizza {
 		return EqualsBuilder.reflectionEquals(this, pizza);
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -118,5 +118,7 @@ public class Pizza {
 	public String toString() {
 		return "" + code + ", " + nom + ", " + prix + "," + categoriePizza ;
 	}
+	
+	
 
 }
