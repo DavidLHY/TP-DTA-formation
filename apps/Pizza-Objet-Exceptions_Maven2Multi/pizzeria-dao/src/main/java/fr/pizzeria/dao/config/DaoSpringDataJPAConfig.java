@@ -3,13 +3,13 @@ package fr.pizzeria.dao.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import fr.pizzeria.dao.PizzaDaoSpringReposJPA;
 import fr.pizzeria.dao.aspect.DaoAspect;
@@ -19,6 +19,7 @@ import fr.pizzeria.dao.aspect.DaoAspect;
 @EnableTransactionManagement
 @EnableJpaRepositories("fr.pizzeria.dao.repos")
 @EnableAspectJAutoProxy
+@EnableWebMvc
 public class DaoSpringDataJPAConfig {
 
 	
@@ -33,10 +34,17 @@ public class DaoSpringDataJPAConfig {
 	public LocalEntityManagerFactoryBean entityManagerFactory(){
 		
 		LocalEntityManagerFactoryBean localemf=new LocalEntityManagerFactoryBean();		
-		localemf.setPersistenceUnitName("david-pizzeria-modelH2");
+		//localemf.setPersistenceUnitName("david-pizzeria-modelH2");
 		
 		return localemf;
 	}
+	
+	
+	/*<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="prefix" value="/WEB-INF/views/" />
+	<property name="suffix" value=".jsp" />
+	</bean>*/
+	
 	
 	
 

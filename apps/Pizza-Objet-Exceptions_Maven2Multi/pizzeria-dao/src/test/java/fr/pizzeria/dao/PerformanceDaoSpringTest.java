@@ -10,12 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.pizzeria.dao.config.DaoSpringConfig;
+import fr.pizzeria.dao.config.DaoSpringDataJPATestConfig;
 import fr.pizzeria.modele.CategoriePizza;
 import fr.pizzeria.modele.Pizza;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = DaoSpringConfig.class )
+@ContextConfiguration(classes = DaoSpringDataJPATestConfig.class )
 public class PerformanceDaoSpringTest {
 	
 	@Autowired

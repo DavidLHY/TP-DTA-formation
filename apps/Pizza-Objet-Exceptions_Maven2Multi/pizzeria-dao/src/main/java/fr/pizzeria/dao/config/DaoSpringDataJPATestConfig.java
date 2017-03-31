@@ -9,15 +9,17 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import fr.pizzeria.dao.DaoPerformanceSpringJPA;
+import fr.pizzeria.dao.PizzaDaoSpringReposJPA;
 import fr.pizzeria.dao.aspect.DaoAspect;
 
 @Configuration
-@Import({DaoPerformanceSpringJPA.class, DaoAspect.class})
+@Import({DaoAspect.class, PizzaDaoSpringReposJPA.class})
 @EnableTransactionManagement
 @EnableJpaRepositories("fr.pizzeria.dao.repos")
 @EnableAspectJAutoProxy
+@EnableWebMvc
 public class DaoSpringDataJPATestConfig {
 
 	

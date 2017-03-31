@@ -6,6 +6,8 @@
 		<class>fr.pizzeria.modele.Client</class>
 		<class>fr.pizzeria.modele.Commande</class>
 		<class>fr.pizzeria.modele.Livreur</class>
+		<class>fr.pizzeria.modele.Performance</class>
+		<class>fr.pizzeria.modele.Ingredient</class>
 		
 		<properties>
 			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>

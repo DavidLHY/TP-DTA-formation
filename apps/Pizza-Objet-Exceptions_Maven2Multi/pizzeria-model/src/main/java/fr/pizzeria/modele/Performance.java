@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="livreur")
+@Table(name="performance")
 public class Performance {
 	
 	@Id
@@ -19,7 +19,7 @@ public class Performance {
 	
 	private String service;
 	private LocalDateTime date;
-	private long tempsExecution;
+	private Long tempsExecution;
 	
 	
 	
@@ -47,10 +47,10 @@ public class Performance {
 	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
-	public long getTempsExecution() {
+	public Long getTempsExecution() {
 		return tempsExecution;
 	}
-	public void setTempsExecution(long tempsExecution) {
+	public void setTempsExecution(Long tempsExecution) {
 		this.tempsExecution = tempsExecution;
 	}
 	

@@ -15,11 +15,13 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @ComponentScan("fr.pizzeria.dao")
 @EnableTransactionManagement
 @EnableJpaRepositories("fr.pizzeria.dao.repos")
+@EnableWebMvc
 public class DaoSpringConfig {
 
 	@Bean
@@ -45,7 +47,7 @@ public class DaoSpringConfig {
 	
 	
 	@Bean
-	public PlatformTransactionManager txManager(){
+	public PlatformTransactionManager transactionManager(){
 		
 		return new JpaTransactionManager();
 		 
@@ -63,7 +65,7 @@ public class DaoSpringConfig {
 	
 
 	@Bean	
-	public EntityManagerFactory emf(){
+	public EntityManagerFactory entityManagerFactory(){
 		
 		
 		return lemfb().getNativeEntityManagerFactory();

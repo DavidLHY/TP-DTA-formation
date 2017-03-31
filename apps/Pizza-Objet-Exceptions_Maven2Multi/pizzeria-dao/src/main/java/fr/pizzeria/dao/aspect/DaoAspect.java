@@ -10,7 +10,7 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import fr.pizzeria.dao.Dao;
+import fr.pizzeria.dao.repos.IPerfRepository;
 import fr.pizzeria.modele.Performance;
 import fr.pizzeria.modele.Pizza;
 
@@ -19,7 +19,7 @@ import fr.pizzeria.modele.Pizza;
 public class DaoAspect {
 	
 
-	@Autowired	private Dao<Performance,String> daoPerfJPA;
+	@Autowired private IPerfRepository perfJPA;
 	
 	
 	@Before("execution(* fr.pizzeria.dao.Dao.save(..)) && args(pizza)")
@@ -32,7 +32,7 @@ public class DaoAspect {
 		
 	}
 	
-	@Around("execution(* fr.pizzeria.dao.Dao.(..))")
+	@Around("execution(* fr.pizzeria.dao.Dao.*(..))")
 	private Object TestPerf(ProceedingJoinPoint jps) throws Throwable
 	{
 		
@@ -42,7 +42,7 @@ public class DaoAspect {
 		
 		Object resultat = jps.proceed();
 		
-		long t2= t1 - System.currentTimeMillis( );
+		long t2= System.currentTimeMillis( ) - t1  ;
 		
 		System.out.println(t2 + " [ms]");
 		
@@ -52,7 +52,7 @@ public class DaoAspect {
 		pr.setService(jps.getKind());
 		pr.setTempsExecution(t2);
 		
-		daoPerfJPA.save(pr);
+		perfJPA.save(pr);
 		return resultat;
 		
 	}
