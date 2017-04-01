@@ -34,7 +34,7 @@ public class DaoSpringDataJPAConfig {
 	public LocalEntityManagerFactoryBean entityManagerFactory(){
 		
 		LocalEntityManagerFactoryBean localemf=new LocalEntityManagerFactoryBean();		
-		//localemf.setPersistenceUnitName("david-pizzeria-modelH2");
+		localemf.setPersistenceUnitName("david-pizzeria-model");
 		
 		return localemf;
 	}
