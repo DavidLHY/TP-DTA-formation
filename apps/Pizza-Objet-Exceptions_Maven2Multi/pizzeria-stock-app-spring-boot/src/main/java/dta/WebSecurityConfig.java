@@ -10,36 +10,26 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
-
 @EnableWebSecurity
-
 @EnableGlobalMethodSecurity(securedEnabled = true)
-
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
-
 	protected void configure(HttpSecurity http) throws Exception {
-
-		http.authorizeRequests().antMatchers("/rest/**", "/").permitAll() // ajuster
+		http.authorizeRequests().antMatchers("/rest/**").permitAll() // ajuster
 																			// si
 																			// besoin
 				.anyRequest().authenticated().and().formLogin()
-				// .loginPage("/login") // pour personnaliser la page
-				// d'authentification
+				// .loginPage("/login") // pour personnaliser la page d'authentification
 				.permitAll().and().logout() // déconnexion via un POST /logout
 				.permitAll();
-
+		 //http.csrf().disable();
 	}
 
 	@Autowired
-
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-
 		auth.inMemoryAuthentication().withUser("user").password("user123").roles("USER");
-
 		auth.inMemoryAuthentication().withUser("admin").password("admin123").roles("ADMIN");
-
 	}
 
 }
