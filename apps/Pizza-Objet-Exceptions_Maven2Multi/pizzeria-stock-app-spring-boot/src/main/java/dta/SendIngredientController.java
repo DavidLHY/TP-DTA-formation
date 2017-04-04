@@ -40,7 +40,7 @@ public class SendIngredientController {
 	
 	
 	@RequestMapping(method = RequestMethod.POST)
-	//@Secured("ADMIN")
+	@Secured("ROLE_ADMIN")
 	public String saveIngredient(@ModelAttribute("ingredient") Ingredient ingr) {
 		
 			
@@ -51,7 +51,7 @@ public class SendIngredientController {
 	
 
 	@RequestMapping(value="delete/{id}", method = RequestMethod.GET)
-	@Secured("ADMIN" )
+	@Secured("ROLE_ADMIN" )
 	public String saveIngredient(@PathVariable Integer id) {
 		
 		
@@ -62,7 +62,7 @@ public class SendIngredientController {
 	
 	
 	@RequestMapping(value="edit/{id}", method = RequestMethod.GET)
-	@Secured("ADMIN" )
+	@Secured("ROLE_ADMIN" )
 	public ModelAndView getupdateIngredient(Model model, @PathVariable Integer id) {
 		
 		ModelAndView mav = new ModelAndView();
@@ -78,7 +78,7 @@ public class SendIngredientController {
 
 	
 	@RequestMapping(method = RequestMethod.POST, value = "edit/{id}")
-	@Secured("ADMIN")
+	@Secured("ROLE_ADMIN")
 	public String postEdit(@PathVariable Integer id, @ModelAttribute("oldIngredient") Ingredient ingredient) {
 		ingredientJPA.updateById(id, ingredient);
 		return "redirect:/page/ingredients";
