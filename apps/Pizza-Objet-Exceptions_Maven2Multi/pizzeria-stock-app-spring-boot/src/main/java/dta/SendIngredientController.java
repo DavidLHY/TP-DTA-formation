@@ -40,7 +40,7 @@ public class SendIngredientController {
 	
 	
 	@RequestMapping(method = RequestMethod.POST)
-	@Secured("ADMIN")
+	//@Secured("ADMIN")
 	public String saveIngredient(@ModelAttribute("ingredient") Ingredient ingr) {
 		
 			
