@@ -26,12 +26,8 @@ public class SendIngredientController {
 	@Autowired private IngredientRepository ingredientJPA;
 
 	@RequestMapping(method = RequestMethod.GET)
-	@ResponseBody
 	public ModelAndView sendIngredient(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 
-		 
-		
-		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ingredients/listerIngredient");
 		mav.addObject("listIngr", ingredientJPA.findAll());
@@ -55,7 +51,7 @@ public class SendIngredientController {
 	
 
 	@RequestMapping(value="delete/{id}", method = RequestMethod.GET)
-	//@Secured("ADMIN" )
+	@Secured("ADMIN" )
 	public String saveIngredient(@PathVariable Integer id) {
 		
 		
@@ -66,7 +62,7 @@ public class SendIngredientController {
 	
 	
 	@RequestMapping(value="edit/{id}", method = RequestMethod.GET)
-	//@Secured("ADMIN" )
+	@Secured("ADMIN" )
 	public ModelAndView getupdateIngredient(Model model, @PathVariable Integer id) {
 		
 		ModelAndView mav = new ModelAndView();
@@ -82,7 +78,7 @@ public class SendIngredientController {
 
 	
 	@RequestMapping(method = RequestMethod.POST, value = "edit/{id}")
-	//@Secured("ADMIN")
+	@Secured("ADMIN")
 	public String postEdit(@PathVariable Integer id, @ModelAttribute("oldIngredient") Ingredient ingredient) {
 		ingredientJPA.updateById(id, ingredient);
 		return "redirect:/page/ingredients";

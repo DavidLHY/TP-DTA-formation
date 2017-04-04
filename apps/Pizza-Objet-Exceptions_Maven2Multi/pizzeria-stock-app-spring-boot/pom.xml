@@ -75,13 +75,11 @@
 		<dependency>
 			<groupId>david-Pizzeria</groupId>
 			<artifactId>david-pizzeria-model</artifactId>
-			<version>1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>david-Pizzeria</groupId>
 			<artifactId>david-pizzeria-dao</artifactId>
-			<version>1</version>
 		</dependency>
 
 		<dependency>
@@ -115,6 +113,22 @@
 			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
 
 	</dependencies>
